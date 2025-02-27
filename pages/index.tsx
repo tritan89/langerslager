@@ -29,7 +29,7 @@ export default function Home() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-amber-800 text-white">
         <div className="bg-amber-900 p-8 rounded-lg shadow-lg max-w-md text-center">
-          <h1 className="text-3xl font-bold mb-6">Langer's Lager</h1>
+          <h1 className="text-3xl font-bold mb-6">Langer&apos;s Lager</h1>
           <p className="mb-4">Please verify your age to enter our site</p>
           <input
             type="number"
@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-amber-50">
       <Head>
-        <title>Langer's Lager - Craft Beer</title>
+        <title>Langer&apos;s Lager - Craft Beer</title>
         <meta name="description" content="Handcrafted beer with uncompromising quality" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -59,7 +59,7 @@ export default function Home() {
       <header className="bg-amber-800 text-white">
         <div className="container mx-auto py-6 px-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold">Langer's Lager</div>
+            <div className="text-2xl font-bold">Langer&apos;s Lager</div>
             <nav>
               <ul className="flex space-x-6">
                 <li><Link href="/" className="hover:text-amber-300">Home</Link></li>
@@ -83,7 +83,7 @@ export default function Home() {
             <div className="max-w-2xl text-white">
               <h1 className="text-5xl font-bold mb-4">Crafted With Passion</h1>
               <p className="text-xl mb-6">
-                Langer's Lager brings you handcrafted beers made with the finest ingredients and decades of brewing tradition.
+                Langer&apos;s Lager brings you handcrafted beers made with the finest ingredients and decades of brewing tradition.
               </p>
               <Link href="/contact" className="bg-amber-600 hover:bg-amber-500 text-white font-bold py-3 px-6 rounded-lg inline-block">
                 Order Custom Brew
@@ -132,7 +132,7 @@ export default function Home() {
               <div className="md:w-1/2 md:pl-12">
                 <h2 className="text-3xl font-bold mb-4">Our Story</h2>
                 <p className="mb-4">
-                  Founded on a passion for exceptional beer, Langer's Lager has been perfecting the art of brewing since 2010. Our master brewers combine traditional techniques with innovative approaches to create distinctive flavors that stand out.
+                  Founded on a passion for exceptional beer, Langer&apos;s Lager has been perfecting the art of brewing since 2010. Our master brewers combine traditional techniques with innovative approaches to create distinctive flavors that stand out.
                 </p>
                 <p>
                   Every batch is crafted with care, using locally sourced ingredients whenever possible to support our community and ensure the freshest taste.
@@ -147,11 +147,11 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-xl font-bold">Langer's Lager</p>
+              <p className="text-xl font-bold">Langer&apos;s Lager</p>
               <p>Crafting extraordinary beer experiences</p>
             </div>
             <div>
-              <p>&copy; {new Date().getFullYear()} Langer's Lager. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} Langer&apos;s Lager. All rights reserved.</p>
             </div>
           </div>
         </div>

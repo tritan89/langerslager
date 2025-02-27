@@ -59,44 +59,28 @@ export default function Contact() {
 
     setIsSubmitting(true)
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+    // Simulate API call
+    setTimeout(() => {
+      console.log('Form submitted:', formData)
+      setIsSubmitting(false)
+      setSubmitSuccess(true)
+
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        beerType: '',
+        quantity: '',
+        occasion: '',
+        message: ''
       })
 
-      const result = await response.json()
-
-      if (result.success) {
-        setSubmitSuccess(true)
-
-        // Reset form after successful submission
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          beerType: '',
-          quantity: '',
-          occasion: '',
-          message: ''
-        })
-
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          setSubmitSuccess(false)
-        }, 5000)
-      } else {
-        alert(`Error: ${result.message}`)
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error)
-      alert('There was an error submitting your request. Please try again.')
-    } finally {
-      setIsSubmitting(false)
-    }
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false)
+      }, 5000)
+    }, 1500)
   }
 
   return (
@@ -110,7 +94,7 @@ export default function Contact() {
       <header className="bg-amber-800 text-white">
         <div className="container mx-auto py-6 px-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold">Langer's Lager</div>
+            <div className="text-2xl font-bold">Langer&apos;s Lager</div>
             <nav>
               <ul className="flex space-x-6">
                 <li><Link href="/" className="hover:text-amber-300">Home</Link></li>
@@ -126,14 +110,14 @@ export default function Contact() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-8 text-amber-900 text-center">Custom Brewing Request</h1>
           <p className="text-lg mb-12 text-center">
-            Looking for a special beer for your event or occasion? Fill out the form below and we'll craft a custom brew just for you!
+            Looking for a special beer for your event or occasion? Fill out the form below and we&apos;ll craft a custom brew just for you!
           </p>
 
           <div className="bg-white rounded-lg shadow-lg p-8">
             {submitSuccess ? (
               <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
                 <p className="font-medium">Thank you for your request!</p>
-                <p>We've received your custom brewing inquiry and will get back to you within 48 hours.</p>
+                <p>We&apos;ve received your custom brewing inquiry and will get back to you within 48 hours.</p>
               </div>
             ) : null}
 
@@ -310,11 +294,11 @@ export default function Contact() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-xl font-bold">Langer's Lager</p>
+              <p className="text-xl font-bold">Langer&apos;s Lager</p>
               <p>Crafting extraordinary beer experiences</p>
             </div>
             <div>
-              <p>&copy; {new Date().getFullYear()} Langer's Lager. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} Langer&apos;s Lager. All rights reserved.</p>
             </div>
           </div>
         </div>

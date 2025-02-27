@@ -13,7 +13,7 @@ export default function Layout({ children, title, description }: LayoutProps) {
   return (
     <div className="min-h-screen bg-amber-50">
       <Head>
-        <title>{title} - Langer's Lager</title>
+        <title>{title} - Langer&apos;s Lager</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@ export default function Layout({ children, title, description }: LayoutProps) {
       <header className="bg-amber-800 text-white">
         <div className="container mx-auto py-6 px-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold hover:text-amber-300">Langer's Lager</Link>
+            <Link href="/" className="text-2xl font-bold hover:text-amber-300">Langer&apos;s Lager</Link>
             <nav className="hidden md:block">
               <ul className="flex space-x-6">
                 <li><Link href="/" className="hover:text-amber-300">Home</Link></li>
@@ -49,7 +49,7 @@ export default function Layout({ children, title, description }: LayoutProps) {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-xl font-bold">Langer's Lager</p>
+              <p className="text-xl font-bold">Langer&apos;s Lager</p>
               <p>Crafting extraordinary beer experiences</p>
             </div>
             <div className="flex space-x-6 mb-4 md:mb-0">
@@ -58,7 +58,7 @@ export default function Layout({ children, title, description }: LayoutProps) {
               <a href="#" className="hover:text-amber-300">Twitter</a>
             </div>
             <div>
-              <p>&copy; {new Date().getFullYear()} Langer's Lager. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} Langer&apos;s Lager. All rights reserved.</p>
             </div>
           </div>
         </div>

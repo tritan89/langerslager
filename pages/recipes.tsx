@@ -97,7 +97,7 @@ export default function Recipes() {
   return (
     <div className="min-h-screen bg-amber-50">
       <Head>
-        <title>Recipes - Langer's Lager</title>
+        <title>Recipes - Langer&apos;s Lager</title>
         <meta name="description" content="Delicious recipes featuring Langer's Lager beers" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -105,7 +105,7 @@ export default function Recipes() {
       <header className="bg-amber-800 text-white">
         <div className="container mx-auto py-6 px-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold">Langer's Lager</div>
+            <div className="text-2xl font-bold">Langer&apos;s Lager</div>
             <nav>
               <ul className="flex space-x-6">
                 <li><Link href="/" className="hover:text-amber-300">Home</Link></li>
@@ -130,8 +130,8 @@ export default function Recipes() {
                 key={difficulty}
                 onClick={() => setFilterDifficulty(difficulty)}
                 className={`px-4 py-2 text-sm font-medium ${filterDifficulty === difficulty
-                    ? 'bg-amber-600 text-white'
-                    : 'bg-white text-amber-700 hover:bg-amber-100'
+                  ? 'bg-amber-600 text-white'
+                  : 'bg-white text-amber-700 hover:bg-amber-100'
                   } border border-amber-300 ${difficulty === 'All' ? 'rounded-l-md' : ''
                   } ${difficulty === 'Advanced' ? 'rounded-r-md' : ''
                   }`}
@@ -154,8 +154,8 @@ export default function Recipes() {
                 <div className="flex justify-between items-center mb-2">
                   <h2 className="text-xl font-bold text-amber-900">{recipe.title}</h2>
                   <span className={`text-xs font-semibold px-2 py-1 rounded ${recipe.difficulty === 'Easy' ? 'bg-green-100 text-green-800' :
-                      recipe.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-red-100 text-red-800'
+                    recipe.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-red-100 text-red-800'
                     }`}>
                     {recipe.difficulty}
                   </span>
@@ -190,8 +190,8 @@ export default function Recipes() {
 
                 <div className="mb-6">
                   <span className={`text-xs font-semibold px-2 py-1 rounded ${selectedRecipe.difficulty === 'Easy' ? 'bg-green-100 text-green-800' :
-                      selectedRecipe.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-red-100 text-red-800'
+                    selectedRecipe.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-red-100 text-red-800'
                     }`}>
                     {selectedRecipe.difficulty}
                   </span>
@@ -231,11 +231,11 @@ export default function Recipes() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-xl font-bold">Langer's Lager</p>
+              <p className="text-xl font-bold">Langer&apos;s Lager</p>
               <p>Crafting extraordinary beer experiences</p>
             </div>
             <div>
-              <p>&copy; {new Date().getFullYear()} Langer's Lager. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} Langer&apos;s Lager. All rights reserved.</p>
             </div>
           </div>
         </div>
