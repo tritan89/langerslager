@@ -100,8 +100,8 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Classic Lager",
-                  description: "Our flagship brew with a smooth, refreshing taste that's perfect for any occasion.",
+                  name: "Langer's Lager",
+                  description: "A refreshing rice lager that goes down a little too smooth",
                 },
                 {
                   name: "Amber Ale",
