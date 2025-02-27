@@ -17,11 +17,11 @@ export default function Home() {
   }, [])
 
   const handleAgeVerification = () => {
-    if (age && age >= 21) {
+    if (age && age >= 19) {
       setAgeVerified(true)
       localStorage.setItem('ageVerified', 'true')
     } else {
-      alert('You must be 21 or older to view this site.')
+      alert('You must be 19 or older to view this site.')
     }
   }
 
