@@ -86,7 +86,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-amber-50">
       <Head>
-        <title>Contact Us - Langer's Lager</title>
+        <title>Contact Us - Langer&apos;s Lager</title>
         <meta name="description" content="Request custom beer brewing from Langer's Lager" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
