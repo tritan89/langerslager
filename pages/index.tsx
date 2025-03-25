@@ -2,9 +2,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 import BeerCard from '../components/BeerCard'
-import { createClient } from '@/utils/supabase/server';
 
 export default function Home() {
   const featuredBeers = [
@@ -16,12 +14,12 @@ export default function Home() {
     {
       name: "Amber Ale",
       description: "A rich, malty profile with caramel notes and a balanced hop character.",
-      imageUrl: "/images/amber-ale.jpg"
+      imageUrl: "/images/3beertbl.jpg"
     },
     {
       name: "IPA Delight",
       description: "Bold hoppy flavor with citrus and pine notes for the adventurous beer lover.",
-      imageUrl: "/images/ipa.jpg"
+      imageUrl: "/images/3beertbl.jpg"
     }
   ]
 
