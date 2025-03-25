@@ -2,7 +2,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-// import BeerCard from '../components/BeerCard'
+import BeerCard from '../components/BeerCard'
 
 export default function Home() {
   const featuredBeers = [
