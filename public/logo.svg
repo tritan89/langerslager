@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <!-- Background circle -->
+  <circle cx="250" cy="250" r="240" fill="#f8d568"/>
+  
+  <!-- Outer ring -->
+  <circle cx="250" cy="250" r="230" fill="none" stroke="#8B4513" stroke-width="8"/>
+  
+  <!-- Inner decorative ring -->
+  <circle cx="250" cy="250" r="210" fill="none" stroke="#8B4513" stroke-width="3" stroke-dasharray="5,5"/>
+  
+  <!-- Beer mug (centered) -->
+  <path d="M185,160 L185,350 Q185,380 215,380 L285,380 Q315,380 315,350 L315,160 Q315,145 300,145 L200,145 Q185,145 185,160 Z" fill="#e8b504" stroke="#8B4513" stroke-width="5"/>
+  
+  <!-- Beer foam (moved up slightly) -->
+  <path d="M185,160 Q195,135 205,150 Q215,125 225,140 Q235,120 245,135 Q255,120 265,140 Q275,125 285,140 Q295,125 305,150 Q315,140 315,160" fill="#FFFFFF" stroke="#8B4513" stroke-width="3"/>
+  
+  <!-- Mug handle -->
+  <path d="M315,180 L335,180 Q355,180 355,200 L355,270 Q355,290 335,290 L315,290" fill="none" stroke="#8B4513" stroke-width="5"/>
+  
+  <!-- Beer bubbles -->
+  <circle cx="240" cy="200" r="5" fill="#FFFFFF"/>
+  <circle cx="260" cy="230" r="4" fill="#FFFFFF"/>
+  <circle cx="235" cy="260" r="6" fill="#FFFFFF"/>
+  <circle cx="275" cy="290" r="5" fill="#FFFFFF"/>
+  <circle cx="250" cy="320" r="4" fill="#FFFFFF"/>
+  <circle cx="290" cy="255" r="3" fill="#FFFFFF"/>
+  <circle cx="220" cy="290" r="4" fill="#FFFFFF"/>
+  
+  <!-- Top text "LANGER'S" moved up -->
+  <text x="250" y="110" font-family="Arial Black, sans-serif" font-size="30" fill="#8B4513" text-anchor="middle" font-weight="bold">LANGER'S</text>
+  
+  <!-- Bottom text "LAGER" without banner -->
+  <text x="250" y="445" font-family="Arial Black, sans-serif" font-size="30" fill="#8B4513" text-anchor="middle" font-weight="bold">LAGER</text>
+  
+  <!-- Established text -->
+  <text x="250" y="395" font-family="Times New Roman, serif" font-size="14" fill="#8B4513" text-anchor="middle" font-style="italic">EST. 2024</text>
+  
+  <!-- Wheat decorations removed -->
+</svg>
