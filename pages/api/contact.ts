@@ -1,22 +1,15 @@
 // pages/api/contact.ts
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-type ContactFormData = {
-  name: string
-  email: string
-  phone: string
-  beerType: string
-  quantity: string
-  occasion: string
-  message: string
-}
+import { supabase } from '@/utils/supabase'
+import { ContactFormData } from '@/types/beers'
 
 type ResponseData = {
   success: boolean
   message: string
+  id?: number
 }
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
@@ -25,27 +18,64 @@ export default function handler(
   }
 
   try {
-    const data = req.body as ContactFormData
+    const formData = req.body as ContactFormData
 
     // Validate required fields
-    if (!data.name || !data.email || !data.beerType || !data.quantity) {
+    if (!formData.name || !formData.email || !formData.beerType || !formData.quantity) {
       return res.status(400).json({ success: false, message: 'Missing required fields' })
     }
 
-    // Here you would typically:
-    // 1. Store the submission in a database
-    // 2. Send an email notification
-    // 3. Process the data as needed
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      return res.status(400).json({ success: false, message: 'Invalid email format' })
+    }
 
-    // For now, we'll just log it
-    console.log('Received form submission:', data)
+    // Insert into Supabase
+    const { data, error } = await supabase
+      .from('contact_submissions')
+      .insert([
+        {
+          name: formData.name.trim(),
+          email: formData.email.trim().toLowerCase(),
+          phone: formData.phone?.trim() || null,
+          beer_type: formData.beerType.trim(),
+          quantity: formData.quantity.trim(),
+          occasion: formData.occasion?.trim() || null,
+          message: formData.message?.trim() || null,
+        }
+      ])
+      .select()
+      .single()
 
-    // Simulate a delay to mimic processing
-    setTimeout(() => {
-      return res.status(200).json({ success: true, message: 'Form submitted successfully' })
-    }, 1000)
+    if (error) {
+      console.error('Supabase error:', error)
+      return res.status(500).json({ 
+        success: false, 
+        message: 'Failed to save submission. Please try again.' 
+      })
+    }
+
+    // Log successful submission
+    console.log('Contact form submission saved:', {
+      id: data.id,
+      name: formData.name,
+      email: formData.email,
+      beerType: formData.beerType,
+      timestamp: new Date().toISOString()
+    })
+
+    return res.status(200).json({ 
+      success: true, 
+      message: 'Thank you for your submission! We\'ll get back to you within 48 hours.',
+      id: data.id
+    })
+
   } catch (error) {
-    console.error('Error processing form submission:', error)
-    return res.status(500).json({ success: false, message: 'Internal server error' })
+    console.error('Unexpected error processing form submission:', error)
+    return res.status(500).json({ 
+      success: false, 
+      message: 'An unexpected error occurred. Please try again later.' 
+    })
   }
 }

@@ -22,3 +22,30 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Improve text contrast globally - much darker */
+.text-gray-600 {
+  color: #111827 !important; /* very dark gray-900 */
+}
+
+.text-gray-700 {
+  color: #111827 !important; /* very dark gray-900 */
+}
+
+.text-gray-800 {
+  color: #111827 !important; /* very dark gray-900 */
+}
+
+/* Ensure all text is readable */
+p, span, div, label, li {
+  color: #111827;
+}
+
+/* Override amber text colors to be darker when needed */
+.text-amber-800 {
+  color: #92400e !important; /* darker amber */
+}
+
+.text-amber-700 {
+  color: #92400e !important; /* darker amber */
+}
