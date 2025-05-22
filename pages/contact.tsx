@@ -59,9 +59,21 @@ export default function Contact() {
 
     setIsSubmitting(true)
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Failed to submit form')
+      }
+
       setIsSubmitting(false)
       setSubmitSuccess(true)
 
@@ -80,7 +92,13 @@ export default function Contact() {
       setTimeout(() => {
         setSubmitSuccess(false)
       }, 5000)
-    }, 1500)
+
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setIsSubmitting(false)
+      // You could add error state handling here
+      alert('Failed to submit form. Please try again.')
+    }
   }
 
   return (
@@ -124,7 +142,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Full Name*</label>
+                  <label htmlFor="name" className="block text-gray-900 font-medium mb-2">Full Name*</label>
                   <input
                     type="text"
                     id="name"
@@ -138,7 +156,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email Address*</label>
+                  <label htmlFor="email" className="block text-gray-900 font-medium mb-2">Email Address*</label>
                   <input
                     type="email"
                     id="email"
@@ -152,7 +170,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">Phone Number</label>
+                  <label htmlFor="phone" className="block text-gray-900 font-medium mb-2">Phone Number</label>
                   <input
                     type="tel"
                     id="phone"
@@ -164,7 +182,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="beerType" className="block text-gray-700 font-medium mb-2">Beer Type*</label>
+                  <label htmlFor="beerType" className="block text-gray-900 font-medium mb-2">Beer Type*</label>
                   <select
                     id="beerType"
                     name="beerType"
@@ -186,7 +204,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="quantity" className="block text-gray-700 font-medium mb-2">Quantity (Gallons)*</label>
+                  <label htmlFor="quantity" className="block text-gray-900 font-medium mb-2">Quantity (Gallons)*</label>
                   <input
                     type="text"
                     id="quantity"
@@ -201,7 +219,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="occasion" className="block text-gray-700 font-medium mb-2">Occasion</label>
+                  <label htmlFor="occasion" className="block text-gray-900 font-medium mb-2">Occasion</label>
                   <input
                     type="text"
                     id="occasion"
@@ -215,7 +233,7 @@ export default function Contact() {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="message" className="block text-gray-700 font-medium mb-2">Additional Details</label>
+                <label htmlFor="message" className="block text-gray-900 font-medium mb-2">Additional Details</label>
                 <textarea
                   id="message"
                   name="message"
@@ -257,15 +275,15 @@ export default function Contact() {
               <h2 className="text-2xl font-bold mb-4 text-amber-900">Contact Information</h2>
               <div className="space-y-4">
                 <div>
-                  <p className="font-medium text-gray-700">Email:</p>
+                  <p className="font-medium text-gray-900">Email:</p>
                   <p>info@langerslager.com</p>
                 </div>
                 <div>
-                  <p className="font-medium text-gray-700">Phone:</p>
+                  <p className="font-medium text-gray-900">Phone:</p>
                   <p>(555) 123-4567</p>
                 </div>
                 <div>
-                  <p className="font-medium text-gray-700">Social Media:</p>
+                  <p className="font-medium text-gray-900">Social Media:</p>
                   <div className="flex space-x-4 mt-2">
                     <a href="#" className="text-amber-700 hover:text-amber-500">
                       <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
