@@ -1,7 +1,7 @@
 // pages/api/beers.ts
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '../../utils/supabase'
-import { Beer } from '../../types/beer'
+import { Beer } from '@/types/beers'
 
 type ResponseData = {
   beers: Beer[]

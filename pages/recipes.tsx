@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { GetServerSideProps } from 'next'
 import { supabase } from '@/utils/supabase'
-import { Recipe } from '@/types/beer'
+import { Recipe } from '@/types/beers'
 
 interface RecipesProps {
   recipes: Recipe[]

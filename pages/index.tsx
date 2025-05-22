@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { GetServerSideProps } from 'next'
 import BeerCard from '../components/BeerCard'
 import { supabase } from '../utils/supabase'
-import { Beer } from '../types/beer'
+import { Beer } from '../types/beers'
 
 interface HomeProps {
   featuredBeers: Beer[]

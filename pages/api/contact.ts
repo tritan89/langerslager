@@ -1,7 +1,7 @@
 // pages/api/contact.ts
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '@/utils/supabase'
-import { ContactFormData } from '@/types/beer'
+import { ContactFormData } from '@/types/beers'
 
 type ResponseData = {
   success: boolean
