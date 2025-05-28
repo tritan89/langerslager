@@ -28,6 +28,7 @@ export default function Home({ featuredBeers }: HomeProps) {
               <ul className="flex space-x-6">
                 <li><Link href="/" className="hover:text-amber-300">Home</Link></li>
                 <li><Link href="/recipes" className="hover:text-amber-300">Recipes</Link></li>
+                <li><Link href="/beer-recipes" className="hover:text-amber-300">Beer Recipes</Link></li>
                 <li><Link href="/contact" className="hover:text-amber-300">Contact Us</Link></li>
               </ul>
             </nav>
@@ -105,7 +106,7 @@ export default function Home({ featuredBeers }: HomeProps) {
               <div className="md:w-1/2 md:pl-12">
                 <h2 className="text-3xl font-bold mb-4">Our Story</h2>
                 <p className="mb-4">
-                  Founded on a passion for exceptional beer, Langer&apos;s Lager has been perfecting the art of brewing since 2024. Our master brewers combine traditional techniques with innovative approaches to create distinctive flavors that stand out.
+                  Ever Been to a liquor store and seen a 4 pack of craft beer and said fuck that, I sure did and started making my own beer. 
                 </p>
                 <p className="mb-4">
                   I soon found myself experimenting and playing around with what you can do with beer, coming up with exciting new flavors and styles. Still just brewing 5 gallon batches.

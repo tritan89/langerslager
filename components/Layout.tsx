@@ -27,6 +27,7 @@ export default function Layout({ children, title, description }: LayoutProps) {
               <ul className="flex space-x-6">
                 <li><Link href="/" className="hover:text-amber-300">Home</Link></li>
                 <li><Link href="/recipes" className="hover:text-amber-300">Recipes</Link></li>
+                <li><Link href="/beer-recipes" className="hover:text-amber-300">Beer Recipes</Link></li>
                 <li><Link href="/contact" className="hover:text-amber-300">Contact Us</Link></li>
               </ul>
             </nav>
