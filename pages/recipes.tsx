@@ -1,8 +1,7 @@
-// pages/recipes.tsx
 import Head from 'next/head'
-import Link from 'next/link'
 import { useState } from 'react'
 import { GetServerSideProps } from 'next'
+import { NavBar, Footer } from '../components/Layout'
 import { supabase } from '@/utils/supabase'
 import { Recipe } from '@/types/beers'
 
@@ -19,157 +18,179 @@ export default function Recipes({ recipes }: RecipesProps) {
     : recipes.filter(recipe => recipe.difficulty === filterDifficulty)
 
   return (
-    <div className="min-h-screen bg-amber-50">
+    <div className="min-h-screen bg-paper font-sans text-ink relative overflow-hidden">
       <Head>
-        <title>Recipes - Langer&apos;s Lager</title>
+        <title>Recipes — Langer&apos;s Lager</title>
         <meta name="description" content="Delicious recipes featuring Langer's Lager beers" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="bg-amber-800 text-white">
-        <div className="container mx-auto py-6 px-4">
-          <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold">Langer&apos;s Lager</div>
-            <nav>
-              <ul className="flex space-x-6">
-                <li><Link href="/" className="hover:text-amber-300">Home</Link></li>
-                <li><Link href="/recipes" className="hover:text-amber-300">Recipes</Link></li>
-                <li><Link href="/contact" className="hover:text-amber-300">Contact Us</Link></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <div className="absolute inset-0 grain-overlay pointer-events-none" />
 
-      <main className="container mx-auto py-12 px-4">
-        <h1 className="text-4xl font-bold mb-8 text-amber-900 text-center">Cook With Our Beer</h1>
-        <p className="text-lg mb-8 max-w-3xl mx-auto text-center">
-          Discover delicious recipes that incorporate our craft beers, enhancing flavors and creating unforgettable culinary experiences.
+      <div className="relative z-2 bg-paper">
+        <NavBar active="Recipes" onPaper />
+      </div>
+
+      {/* Header */}
+      <section className="relative z-2 px-14 pt-[100px] pb-[60px]">
+        <div className="eyebrow mb-5">Recipes &amp; pairings</div>
+        <h1 className="text-[96px] font-bold m-0 tracking-[-0.035em] leading-[0.9] max-w-[900px]">
+          Cook with<br />
+          <span className="italic font-medium text-moss">our beer</span>.
+        </h1>
+        <p className="text-lg leading-relaxed mt-8 max-w-[560px] text-ink opacity-75">
+          Discover delicious recipes that incorporate our craft beers, enhancing
+          flavors and creating unforgettable culinary experiences.
         </p>
+      </section>
 
-        <div className="mb-8 flex justify-center">
-          <div className="inline-flex rounded-md shadow-sm">
-            {['All', 'Easy', 'Intermediate', 'Advanced'].map((difficulty) => (
-              <button
-                key={difficulty}
-                onClick={() => setFilterDifficulty(difficulty)}
-                className={`px-4 py-2 text-sm font-medium ${filterDifficulty === difficulty
-                  ? 'bg-amber-600 text-white'
-                  : 'bg-white text-amber-700 hover:bg-amber-100'
-                  } border border-amber-300 ${difficulty === 'All' ? 'rounded-l-md' : ''
-                  } ${difficulty === 'Advanced' ? 'rounded-r-md' : ''
-                  }`}
-              >
-                {difficulty}
-              </button>
-            ))}
-          </div>
+      {/* Filter bar */}
+      <section className="relative z-2 px-14 pb-12">
+        <div className="flex gap-4 border-b-2 border-ink pb-4">
+          {['All', 'Easy', 'Intermediate', 'Advanced'].map((d) => (
+            <button
+              key={d}
+              onClick={() => setFilterDifficulty(d)}
+              className={`font-mono text-[11px] tracking-[0.14em] uppercase px-4 py-2 cursor-pointer transition-colors border-none ${
+                filterDifficulty === d
+                  ? 'bg-ink text-paper font-bold'
+                  : 'bg-transparent text-ink font-medium opacity-70 hover:opacity-100'
+              }`}
+            >
+              {d}
+            </button>
+          ))}
         </div>
+      </section>
 
+      {/* Recipe grid */}
+      <section className="relative z-2 px-14 pb-[100px]">
         {filteredRecipes.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredRecipes.map((recipe) => (
-              <div
+          <div className="grid grid-cols-3 border-t border-l border-ink">
+            {filteredRecipes.map((recipe, i) => (
+              <article
                 key={recipe.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                className="border-r border-b border-ink bg-paper cursor-pointer hover:bg-paper2 transition-colors"
                 onClick={() => setSelectedRecipe(recipe)}
               >
-                <div className="h-48 bg-amber-200"></div>
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <h2 className="text-xl font-bold text-amber-900">{recipe.title}</h2>
-                    <span className={`text-xs font-semibold px-2 py-1 rounded ${recipe.difficulty === 'Easy' ? 'bg-green-100 text-green-800' :
-                      recipe.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                        'bg-red-100 text-red-800'
-                      }`}>
-                      {recipe.difficulty}
-                    </span>
+                <div className={`h-[200px] relative overflow-hidden ${
+                  ['bg-moss', 'bg-ocean', 'bg-kelp'][i % 3]
+                }`}>
+                  <div className="absolute inset-0 dots-overlay opacity-22" />
+                  <div className="absolute bottom-4 left-6 font-mono text-[10px] tracking-[0.18em] uppercase text-paper/85">
+                    [ recipe photo ]
                   </div>
-                  <p className="text-gray-900 mb-4">{recipe.description}</p>
-                  <button
-                    className="text-amber-600 font-semibold hover:text-amber-800"
-                  >
-                    View Recipe
-                  </button>
                 </div>
-              </div>
+                <div className="p-7">
+                  <div className="flex justify-between items-start mb-3">
+                    <div className="index-tag">№ {String(i + 1).padStart(3, '0')}</div>
+                    <div className={`font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-[3px] border ${
+                      recipe.difficulty === 'Easy'
+                        ? 'border-moss text-moss'
+                        : recipe.difficulty === 'Intermediate'
+                        ? 'border-ocean text-ocean'
+                        : 'border-rust text-rust'
+                    }`}>
+                      {recipe.difficulty}
+                    </div>
+                  </div>
+                  <h3 className="text-[26px] font-bold mb-3 tracking-[-0.02em] leading-[1.1]">
+                    {recipe.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-ink opacity-75 mb-5">
+                    {recipe.description}
+                  </p>
+                  <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink border-b border-ink pb-0.5 w-fit">
+                    View recipe →
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <p className="text-amber-700 text-lg">No recipes available at the moment. Check back soon!</p>
+          <div className="text-center py-20">
+            <p className="text-lg text-ink opacity-60">
+              No recipes available at the moment. Check back soon!
+            </p>
           </div>
         )}
+      </section>
 
-        {/* Recipe Modal */}
-        {selectedRecipe && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg max-w-3xl w-full max-h-screen overflow-y-auto">
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h2 className="text-2xl font-bold text-amber-900">{selectedRecipe.title}</h2>
-                  <button
-                    onClick={() => setSelectedRecipe(null)}
-                    className="text-gray-500 hover:text-gray-700"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-
-                <div className="mb-6">
-                  <span className={`text-xs font-semibold px-2 py-1 rounded ${selectedRecipe.difficulty === 'Easy' ? 'bg-green-100 text-green-800' :
-                    selectedRecipe.difficulty === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-red-100 text-red-800'
-                    }`}>
-                    {selectedRecipe.difficulty}
-                  </span>
-                </div>
-
-                <p className="text-gray-900 mb-6">{selectedRecipe.description}</p>
-
-                <div className="mb-6">
-                  <h3 className="text-lg font-bold mb-2 text-amber-800">Ingredients</h3>
-                  <ul className="list-disc pl-5 space-y-1">
-                    {selectedRecipe.ingredients.map((ingredient, idx) => (
-                      <li key={idx} className="text-gray-900">{ingredient}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mb-6">
-                  <h3 className="text-lg font-bold mb-2 text-amber-800">Instructions</h3>
-                  <ol className="list-decimal pl-5 space-y-2">
-                    {selectedRecipe.instructions.map((step, idx) => (
-                      <li key={idx} className="text-gray-900">{step}</li>
-                    ))}
-                  </ol>
-                </div>
-
+      {/* Recipe Modal */}
+      {selectedRecipe && (
+        <div
+          className="fixed inset-0 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-8 z-50"
+          onClick={() => setSelectedRecipe(null)}
+        >
+          <div
+            className="bg-paper border-[1.5px] border-ink max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-10">
+              <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h3 className="text-lg font-bold mb-2 text-amber-800">Beer Pairing</h3>
-                  <p className="text-gray-900">{selectedRecipe.pairing_notes}</p>
+                  <div className={`inline-block font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-[3px] border mb-3 ${
+                    selectedRecipe.difficulty === 'Easy'
+                      ? 'border-moss text-moss'
+                      : selectedRecipe.difficulty === 'Intermediate'
+                      ? 'border-ocean text-ocean'
+                      : 'border-rust text-rust'
+                  }`}>
+                    {selectedRecipe.difficulty}
+                  </div>
+                  <h2 className="text-[36px] font-bold tracking-[-0.02em] leading-[1.1]">
+                    {selectedRecipe.title}
+                  </h2>
                 </div>
+                <button
+                  onClick={() => setSelectedRecipe(null)}
+                  className="bg-transparent border-none text-ink opacity-50 hover:opacity-100 cursor-pointer text-2xl transition-opacity"
+                >
+                  ×
+                </button>
+              </div>
+
+              <p className="text-base leading-relaxed text-ink opacity-80 mb-8">
+                {selectedRecipe.description}
+              </p>
+
+              <div className="mb-8">
+                <div className="eyebrow mb-4">Ingredients</div>
+                <ul className="list-none p-0 m-0 border-t border-ink/15">
+                  {selectedRecipe.ingredients.map((ingredient, idx) => (
+                    <li key={idx} className="py-2 border-b border-ink/10 text-sm">
+                      {ingredient}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mb-8">
+                <div className="eyebrow mb-4">Instructions</div>
+                <ol className="list-none p-0 m-0">
+                  {selectedRecipe.instructions.map((step, idx) => (
+                    <li key={idx} className="flex gap-4 py-3 border-b border-ink/10">
+                      <span className="font-mono text-sm font-semibold text-ocean shrink-0">
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-sm leading-relaxed">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              <div className="bg-kelp/10 p-6 border border-kelp/20">
+                <div className="eyebrow text-kelp mb-3">Beer pairing</div>
+                <p className="text-sm leading-relaxed m-0">
+                  {selectedRecipe.pairing_notes}
+                </p>
               </div>
             </div>
           </div>
-        )}
-      </main>
-
-      <footer className="bg-amber-900 text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-xl font-bold">Langer&apos;s Lager</p>
-              <p>Crafting extraordinary beer experiences</p>
-            </div>
-            <div>
-              <p>&copy; {new Date().getFullYear()} Langer&apos;s Lager. All rights reserved.</p>
-            </div>
-          </div>
         </div>
-      </footer>
+      )}
+
+      <Footer />
     </div>
   )
 }
@@ -179,28 +200,16 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const { data: recipes, error } = await supabase
       .from('recipes')
       .select('*')
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false })
 
     if (error) {
-      console.error('Error fetching recipes:', error);
-      return {
-        props: {
-          recipes: []
-        }
-      };
+      console.error('Error fetching recipes:', error)
+      return { props: { recipes: [] } }
     }
 
-    return {
-      props: {
-        recipes: recipes || []
-      }
-    };
+    return { props: { recipes: recipes || [] } }
   } catch (error) {
-    console.error('Exception fetching recipes:', error);
-    return {
-      props: {
-        recipes: []
-      }
-    };
+    console.error('Exception fetching recipes:', error)
+    return { props: { recipes: [] } }
   }
-};
+}

@@ -1,4 +1,3 @@
-// components/Layout.tsx
 import Head from 'next/head'
 import Link from 'next/link'
 import { ReactNode } from 'react'
@@ -9,60 +8,176 @@ type LayoutProps = {
   description: string
 }
 
-export default function Layout({ children, title, description }: LayoutProps) {
+function Wordmark({ color = 'text-ink' }: { color?: string }) {
   return (
-    <div className="min-h-screen bg-amber-50">
+    <Link href="/" className={`flex items-center gap-2.5 no-underline ${color}`}>
+      <div className="w-3 h-3 bg-current rotate-45 shrink-0" />
+      <span className="font-sans font-bold text-[22px] tracking-tight leading-none">
+        Langer&apos;s Lager
+      </span>
+    </Link>
+  )
+}
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Beers', href: '/beers' },
+  { label: 'Our Story', href: '/story' },
+  { label: 'Tap Room', href: '/taproom' },
+  { label: 'Contact', href: '/contact' },
+]
+
+export function NavBar({
+  active,
+  onPaper = false,
+  solid = false,
+}: {
+  active?: string
+  onPaper?: boolean
+  solid?: boolean
+}) {
+  const textColor = onPaper ? 'text-ink' : 'text-paper'
+  const borderColor = onPaper
+    ? 'border-ink/15'
+    : 'border-paper/20'
+  const bg = solid ? (onPaper ? 'bg-paper' : 'bg-ink') : 'bg-transparent'
+
+  return (
+    <div
+      className={`flex items-center justify-between px-14 py-[22px] border-b ${borderColor} ${bg} relative z-30`}
+    >
+      <Wordmark color={textColor} />
+      <nav className="flex gap-9 items-center">
+        {navItems.map((item) => (
+          <Link
+            key={item.label}
+            href={item.href}
+            className={`font-sans font-medium text-sm tracking-[0.01em] no-underline ${textColor} ${
+              item.label === active ? 'opacity-100' : 'opacity-70 hover:opacity-100'
+            } ${
+              item.label === active
+                ? `border-b-[1.5px] ${onPaper ? 'border-ink' : 'border-paper'}`
+                : 'border-b-[1.5px] border-transparent'
+            } pb-[3px] transition-opacity`}
+          >
+            {item.label}
+          </Link>
+        ))}
+        <Link
+          href="/contact"
+          className={`font-sans font-semibold text-[13px] tracking-[0.02em] no-underline px-[18px] py-2.5 transition-colors ${
+            onPaper
+              ? 'bg-ink text-paper hover:bg-ink2'
+              : 'bg-paper text-ink hover:bg-paper2'
+          }`}
+        >
+          Order a brew →
+        </Link>
+      </nav>
+    </div>
+  )
+}
+
+export function Footer() {
+  return (
+    <footer className="bg-ink text-paper px-14 pt-[72px] pb-8 relative overflow-hidden">
+      <div className="absolute inset-0 grain-overlay-heavy pointer-events-none" />
+      <div className="relative grid grid-cols-[1.4fr_1fr_1fr_1fr] gap-12">
+        <div>
+          <Wordmark color="text-paper" />
+          <p className="font-sans text-sm leading-relaxed text-paper/70 mt-5 max-w-xs">
+            A very small-batch brewery. Still 5 gallons at a time. Brewed on the
+            west coast of BC since 2024.
+          </p>
+          <div className="mt-6 flex gap-2.5">
+            {['IG', 'FB', 'UT'].map((s) => (
+              <div
+                key={s}
+                className="w-[34px] h-[34px] border border-paper/30 flex items-center justify-center font-mono text-[10px] tracking-[0.1em] text-paper"
+              >
+                {s}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {[
+          {
+            h: 'Visit',
+            l: ['123 Brew Lane', 'Craftsville, BC', 'Wed–Sat, noon–9pm', 'Sunday, 1–6pm'],
+          },
+          {
+            h: 'Browse',
+            l: [
+              { label: 'Our Beers', href: '/beers' },
+              { label: 'Our Story', href: '/story' },
+              { label: 'Tap Room', href: '/taproom' },
+              { label: 'Events', href: '/taproom' },
+              { label: 'Recipes', href: '/recipes' },
+            ],
+          },
+          {
+            h: 'Get in touch',
+            l: [
+              'info@langerslager.com',
+              '(555) 123-4567',
+              { label: 'Custom brew requests', href: '/contact' },
+              'Newsletter signup',
+            ],
+          },
+        ].map((col) => (
+          <div key={col.h}>
+            <div className="eyebrow text-paper opacity-70 mb-[18px]">{col.h}</div>
+            <ul className="list-none p-0 m-0">
+              {col.l.map((li) => {
+                const isLink = typeof li === 'object' && 'href' in li
+                return (
+                  <li
+                    key={isLink ? li.label : (li as string)}
+                    className="font-sans text-sm text-paper opacity-85 mb-2 leading-normal"
+                  >
+                    {isLink ? (
+                      <Link href={li.href} className="text-paper no-underline hover:opacity-100">
+                        {li.label}
+                      </Link>
+                    ) : (
+                      (li as string)
+                    )}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="relative mt-16 pt-5 border-t border-paper/15 flex justify-between font-mono text-[11px] tracking-[0.12em] uppercase text-paper/55">
+        <span>© 2026 Langer&apos;s Lager — Please drink responsibly</span>
+        <span>Crafted on stolen Coast Salish land · BC, Canada</span>
+      </div>
+    </footer>
+  )
+}
+
+export default function Layout({
+  children,
+  title,
+  description,
+}: LayoutProps) {
+  return (
+    <div className="min-h-screen bg-paper font-sans text-ink relative overflow-hidden">
       <Head>
-        <title>{title} - Langer&apos;s Lager</title>
+        <title>{title} — Langer&apos;s Lager</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <header className="bg-amber-800 text-white">
-        <div className="container mx-auto py-6 px-4">
-          <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold hover:text-amber-300">Langer&apos;s Lager</Link>
-            <nav className="hidden md:block">
-              <ul className="flex space-x-6">
-                <li><Link href="/" className="hover:text-amber-300">Home</Link></li>
-                <li><Link href="/recipes" className="hover:text-amber-300">Recipes</Link></li>
-                <li><Link href="/contact" className="hover:text-amber-300">Contact Us</Link></li>
-              </ul>
-            </nav>
-            <div className="md:hidden">
-              <button className="text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <div className="absolute inset-0 grain-overlay pointer-events-none" />
 
-      <main>
-        {children}
-      </main>
+      <main className="relative z-2">{children}</main>
 
-      <footer className="bg-amber-900 text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p className="text-xl font-bold">Langer&apos;s Lager</p>
-              <p>Crafting extraordinary beer experiences</p>
-            </div>
-            <div className="flex space-x-6 mb-4 md:mb-0">
-              <a href="#" className="hover:text-amber-300">Facebook</a>
-              <a href="#" className="hover:text-amber-300">Instagram</a>
-              <a href="#" className="hover:text-amber-300">Twitter</a>
-            </div>
-            <div>
-              <p>&copy; {new Date().getFullYear()} Langer&apos;s Lager. All rights reserved.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

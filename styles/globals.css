@@ -1,51 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ink / paper */
+  --color-ink: #0e2a2b;
+  --color-ink2: #16383a;
+  --color-paper: #eae4d5;
+  --color-paper2: #e1dac7;
+  --color-paper3: #d4cbb3;
+
+  /* greens / blues */
+  --color-moss: #3d5b3f;
+  --color-moss2: #4f7452;
+  --color-ocean: #1d4a55;
+  --color-ocean2: #2a6775;
+  --color-kelp: #0a3a30;
+
+  /* accents */
+  --color-rust: #b8532a;
+  --color-rust2: #d66b3c;
+  --color-fog: #c9c4b4;
+
+  /* neutrals */
+  --color-charcoal: #1a2423;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Improve text contrast globally - much darker */
-.text-gray-600 {
-  color: #111827 !important; /* very dark gray-900 */
+/* Grain texture overlay helper */
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.09 0 0 0 0 0.09 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.35;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 1;
 }
 
-.text-gray-700 {
-  color: #111827 !important; /* very dark gray-900 */
+.grain-overlay-heavy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05 0 0 0 0 0.09 0 0 0 0 0.09 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.text-gray-800 {
-  color: #111827 !important; /* very dark gray-900 */
+/* Dot halftone overlay */
+.dots-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(14,42,43,0.18) 1px, transparent 1.2px);
+  background-size: 3px 3px;
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+  pointer-events: none;
 }
 
-/* Ensure all text is readable */
-p, span, div, label, li {
-  color: #111827;
+/* Duotone photo treatment */
+.duotone-photo img {
+  filter: grayscale(0.6) contrast(1.05) brightness(0.95);
+  object-fit: cover;
 }
 
-/* Override amber text colors to be darker when needed */
-.text-amber-800 {
-  color: #92400e !important; /* darker amber */
+/* Eyebrow text style */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-.text-amber-700 {
-  color: #92400e !important; /* darker amber */
+/* Mono label style */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Index tag */
+.index-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--color-ink);
+  opacity: 0.55;
 }
