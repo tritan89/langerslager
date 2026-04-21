@@ -51,7 +51,7 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
       <Head>
         <title>The Beers — Langer&apos;s Lager</title>
         <meta name="description" content="Six in rotation, one always in the fermentor, and a stubborn refusal to scale up." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
       <div className="absolute inset-0 grain-overlay pointer-events-none" />

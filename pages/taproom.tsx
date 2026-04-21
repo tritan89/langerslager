@@ -25,7 +25,7 @@ export default function TapRoomPage() {
       <Head>
         <title>Tap Room — Langer&apos;s Lager</title>
         <meta name="description" content="What's pouring, what's coming up. Visit the tap room at 123 Brew Lane, Craftsville." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
       <div className="absolute inset-0 grain-overlay pointer-events-none" />

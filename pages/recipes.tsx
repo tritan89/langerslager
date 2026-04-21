@@ -22,7 +22,7 @@ export default function Recipes({ recipes }: RecipesProps) {
       <Head>
         <title>Recipes — Langer&apos;s Lager</title>
         <meta name="description" content="Delicious recipes featuring Langer's Lager beers" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
       <div className="absolute inset-0 grain-overlay pointer-events-none" />

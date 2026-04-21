@@ -31,7 +31,7 @@ export default function Home({ featuredBeers }: HomeProps) {
       <Head>
         <title>Langer&apos;s Lager — Small batch, simply brewed</title>
         <meta name="description" content="Brewing whatever inspires me from local berries to exiotic flavors." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
       <div className="absolute inset-0 grain-overlay pointer-events-none" />

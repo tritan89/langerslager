@@ -8,7 +8,7 @@ export default function StoryPage() {
       <Head>
         <title>Our Story — Langer&apos;s Lager</title>
         <meta name="description" content="A very small brewery on a rainy coast. Founded 2024, five gallons per batch." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
       <div className="absolute inset-0 grain-overlay pointer-events-none" />

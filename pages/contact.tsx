@@ -97,7 +97,7 @@ export default function Contact() {
       <Head>
         <title>Contact — Langer&apos;s Lager</title>
         <meta name="description" content="Commission a custom beer. Weddings, work parties, or a reason you'd rather not say." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
       <div className="absolute inset-0 grain-overlay pointer-events-none" />

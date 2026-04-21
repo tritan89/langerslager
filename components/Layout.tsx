@@ -166,7 +166,7 @@ export default function Layout({
       <Head>
         <title>{title} — Langer&apos;s Lager</title>
         <meta name="description" content={description} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 

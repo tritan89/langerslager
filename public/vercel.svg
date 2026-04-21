@@ -1,1 +1,17 @@
-<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none">
+  <!-- Glass body -->
+  <path d="M20 15 L25 95 C25 105 35 110 50 110 C65 110 75 105 75 95 L80 15 Z" fill="#F59E0B" stroke="#D97706" stroke-width="2"/>
+  <!-- Foam -->
+  <ellipse cx="50" cy="15" rx="30" ry="8" fill="#FEF3C7"/>
+  <ellipse cx="38" cy="12" rx="10" ry="7" fill="#FFFBEB"/>
+  <ellipse cx="55" cy="10" rx="12" ry="8" fill="#FFFBEB"/>
+  <ellipse cx="65" cy="13" rx="8" ry="6" fill="#FEF3C7"/>
+  <!-- Handle -->
+  <path d="M80 30 C95 30 100 45 100 60 C100 75 95 85 80 85" stroke="#D97706" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Bubbles -->
+  <circle cx="40" cy="70" r="2" fill="#FDE68A" opacity="0.7"/>
+  <circle cx="55" cy="55" r="1.5" fill="#FDE68A" opacity="0.6"/>
+  <circle cx="45" cy="45" r="2.5" fill="#FDE68A" opacity="0.5"/>
+  <circle cx="60" cy="80" r="1.5" fill="#FDE68A" opacity="0.7"/>
+  <circle cx="35" cy="85" r="2" fill="#FDE68A" opacity="0.6"/>
+</svg>
