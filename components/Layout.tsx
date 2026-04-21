@@ -52,24 +52,21 @@ export function NavBar({
           <Link
             key={item.label}
             href={item.href}
-            className={`font-sans font-medium text-sm tracking-[0.01em] no-underline ${textColor} ${
-              item.label === active ? 'opacity-100' : 'opacity-70 hover:opacity-100'
-            } ${
-              item.label === active
+            className={`font-sans font-medium text-sm tracking-[0.01em] no-underline ${textColor} ${item.label === active ? 'opacity-100' : 'opacity-70 hover:opacity-100'
+              } ${item.label === active
                 ? `border-b-[1.5px] ${onPaper ? 'border-ink' : 'border-paper'}`
                 : 'border-b-[1.5px] border-transparent'
-            } pb-[3px] transition-opacity`}
+              } pb-[3px] transition-opacity`}
           >
             {item.label}
           </Link>
         ))}
         <Link
           href="/contact"
-          className={`font-sans font-semibold text-[13px] tracking-[0.02em] no-underline px-[18px] py-2.5 transition-colors ${
-            onPaper
+          className={`font-sans font-semibold text-[13px] tracking-[0.02em] no-underline px-[18px] py-2.5 transition-colors ${onPaper
               ? 'bg-ink text-paper hover:bg-ink2'
               : 'bg-paper text-ink hover:bg-paper2'
-          }`}
+            }`}
         >
           Order a brew →
         </Link>
@@ -86,7 +83,7 @@ export function Footer() {
         <div>
           <Wordmark color="text-paper" />
           <p className="font-sans text-sm leading-relaxed text-paper/70 mt-5 max-w-xs">
-            A very small-batch brewery. Still 5 gallons at a time. Brewed on the
+            A little Home brewery. Brewed on the
             west coast of BC since 2024.
           </p>
           <div className="mt-6 flex gap-2.5">

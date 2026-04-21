@@ -31,24 +31,16 @@ export default function StoryPage() {
       <section className="relative z-2 px-14 pt-10 pb-[100px] grid grid-cols-[1fr_1.2fr] gap-20 items-start">
         <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink opacity-55 leading-relaxed">
           Founded 2024<br />
-          Five gallons per batch<br />
-          Brewed in Craftsville, BC<br />
+          Brewed in Vancouver, BC<br />
           Distributed by walking over
         </div>
         <div>
           <p className="text-[22px] leading-relaxed m-0 tracking-[-0.005em]">
-            Langer&apos;s Lager began with a Christmas homebrew kit, a broken
-            thermometer, and a stubborn suspicion that the best beer on the
-            island wasn&apos;t being made by anyone with a website. Two years later,
-            the kit is gone, the thermometer works, and there&apos;s still no website
-            worth reading — but there&apos;s beer. Five gallons of it, every other
-            week.
+            Langer&apos;s Lager began with a pot, a burner, and a thirsty young man. Going from one to two vessel systems experimenting with teas, spices and whatever else I could could get my hands on a young brewer emerged.  Two years later,
+            there&apos;s more beer being brewed, drunk and shared.
           </p>
           <p className="text-[17px] leading-relaxed mt-6 text-ink opacity-75 max-w-[580px]">
-            We have no plans to scale up. We have plans to get better. Every
-            batch is brewed, bottled, and labeled by hand. Every recipe is
-            tweaked, re-tweaked, and occasionally thrown out. The beers change
-            with the weather and the mood in the garage.
+
           </p>
         </div>
       </section>
@@ -68,7 +60,7 @@ export default function StoryPage() {
               <span className="opacity-70">Ambient 18°C · day six</span>
             </div>
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-right">
-              Craftsville, BC<br />
+              Victoria, BC<br />
               <span className="opacity-70">48.426°N · 123.366°W</span>
             </div>
           </div>
@@ -87,11 +79,9 @@ export default function StoryPage() {
           </div>
           <div className="border-t-2 border-ink">
             {[
-              ['2022', 'The gift', 'A homebrew kit for Christmas. First batch tastes like apple juice left in a sock. We persevere.'],
-              ['2023', 'First good one', "A Belgian blonde with lemon rind and cloves. Friends don't lie — it's actually drinkable."],
-              ['2024', "Langer's Lager", 'We name the operation. Bottle the first proper lager. Print 24 labels on the home printer.'],
-              ['2025', 'The tap room', 'Open the garage door twice a week. Strangers come. Some of them come back.'],
-              ['2026', 'Now', "Six beers in rotation, a couple of experiments, and a fermenter that's never not running."],
+              ['2024', 'The First Kettle', 'A little 7.5 gallon kettle and some DME, it was drinkable.'],
+              ['2025', 'The Kegerator', 'Beer is now on tap, the beer must flow.'],
+              ['2026', 'Now', "A three vessel fully electric pilot system is now opertaional, the beer only gets better."],
             ].map(([y, t, d], i) => (
               <div
                 key={i}

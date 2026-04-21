@@ -28,19 +28,19 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
 
   const beers = dbBeers.length > 0
     ? dbBeers.map((b, i) => ({
-        n: i + 1,
-        name: b.name,
-        style: b.style,
-        abv: String(b.abv),
-        season: b.season,
-        status: 'On tap',
-        hops: b.hops || 'House blend',
-        malts: b.malts || 'House blend',
-        desc: b.description,
-        color: colorMap[i % colorMap.length],
-        colorText: colorTextMap[i % colorTextMap.length],
-        image: b.imageUrl ? `/images/${b.imageUrl}` : '',
-      }))
+      n: i + 1,
+      name: b.name,
+      style: b.style,
+      abv: String(b.abv),
+      season: b.season,
+      status: 'On tap',
+      hops: b.hops || 'House blend',
+      malts: b.malts || 'House blend',
+      desc: b.description,
+      color: colorMap[i % colorMap.length],
+      colorText: colorTextMap[i % colorTextMap.length],
+      image: b.imageUrl ? `/images/${b.imageUrl}` : '',
+    }))
     : fallbackBeers
 
   const styles = ['All styles', 'Lager', 'Ale · IPA', 'Sour', 'Stout · Porter']
@@ -65,8 +65,7 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
             The <span className="italic font-medium text-rust2">beers</span>.
           </h1>
           <p className="text-lg leading-normal text-paper/75 mt-7 max-w-[520px]">
-            Six in rotation, one always in the fermentor, and a stubborn refusal
-            to scale up. Here&apos;s what we make, roughly in the order it gets poured.
+            A collection of all beers brewed by Langer himself, puruse the selection at your pleasure.
           </p>
         </div>
       </div>
@@ -80,9 +79,8 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
               <button
                 key={s}
                 onClick={() => setActiveStyle(i)}
-                className={`bg-transparent border-none cursor-pointer font-mono text-[11px] tracking-[0.12em] uppercase text-ink p-0 ${
-                  i === activeStyle ? 'font-bold opacity-100 border-b border-ink' : 'font-medium opacity-70 hover:opacity-100'
-                }`}
+                className={`bg-transparent border-none cursor-pointer font-mono text-[11px] tracking-[0.12em] uppercase text-ink p-0 ${i === activeStyle ? 'font-bold opacity-100 border-b border-ink' : 'font-medium opacity-70 hover:opacity-100'
+                  }`}
               >
                 {s}
               </button>
@@ -94,9 +92,8 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
               <button
                 key={s}
                 onClick={() => setActiveSeason(i)}
-                className={`bg-transparent border-none cursor-pointer font-mono text-[11px] tracking-[0.12em] uppercase text-ink p-0 ${
-                  i === activeSeason ? 'font-bold opacity-100' : 'font-medium opacity-70 hover:opacity-100'
-                }`}
+                className={`bg-transparent border-none cursor-pointer font-mono text-[11px] tracking-[0.12em] uppercase text-ink p-0 ${i === activeSeason ? 'font-bold opacity-100' : 'font-medium opacity-70 hover:opacity-100'
+                  }`}
               >
                 {s}
               </button>
@@ -116,11 +113,10 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
               <div className="px-7 pt-6 pb-4 flex justify-between items-start">
                 <div className="index-tag">№ {String(b.n).padStart(3, '0')}</div>
                 <div
-                  className={`font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-[3px] ${
-                    b.status === 'On tap'
+                  className={`font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-[3px] ${b.status === 'On tap'
                       ? 'bg-ink text-paper'
                       : 'bg-transparent text-ink border border-ink'
-                  }`}
+                    }`}
                 >
                   {b.status}
                 </div>
