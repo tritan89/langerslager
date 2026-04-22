@@ -6,6 +6,11 @@ import DuotonePhoto from '../components/DuotonePhoto'
 const beerStyles = ['Lager', 'Pale Ale', 'IPA', 'Sour', 'Stout', 'Porter', 'Wheat', 'Surprise me']
 const flavourNotes = ['Citrus', 'Hoppy / bitter', 'Malty / bready', 'Fruity', 'Smoky', 'Sour / tart', 'Spiced', 'Chocolatey']
 
+const quantityOptions = [
+  { value: '5', label: '5 gallons', price: '$170' },
+  { value: '10', label: '10 gallons', price: '$300' },
+] as const
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,8 +18,7 @@ export default function Contact() {
     phone: '',
     hearAbout: '',
     beerStyle: [] as string[],
-    quantity: '',
-    targetAbv: '',
+    quantity: '' as '' | '5' | '10',
     flavours: [] as string[],
     occasion: '',
     eventDate: '',
@@ -38,13 +42,18 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  const todayStr = new Date().toISOString().split('T')[0]
+
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {}
     if (!formData.name.trim()) newErrors.name = 'Required'
     if (!formData.email.trim()) newErrors.email = 'Required'
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email'
+    if (formData.phone.trim() && !/^[\d\s\-().+]+$/.test(formData.phone.trim())) {
+      newErrors.phone = 'Invalid phone number'
+    }
     if (formData.beerStyle.length === 0) newErrors.beerStyle = 'Pick at least one'
-    if (!formData.quantity.trim()) newErrors.quantity = 'Required'
+    if (!formData.quantity) newErrors.quantity = 'Required'
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -65,10 +74,9 @@ export default function Contact() {
           beerType: formData.beerStyle.join(', '),
           quantity: formData.quantity,
           occasion: formData.occasion,
+          eventDate: formData.eventDate,
           message: [
             formData.flavours.length ? `Flavours: ${formData.flavours.join(', ')}` : '',
-            formData.eventDate ? `Event date: ${formData.eventDate}` : '',
-            formData.targetAbv ? `Target ABV: ${formData.targetAbv}` : '',
             formData.hearAbout ? `Heard about us: ${formData.hearAbout}` : '',
             formData.message,
           ].filter(Boolean).join('\n'),
@@ -82,7 +90,7 @@ export default function Contact() {
       setSubmitSuccess(true)
       setFormData({
         name: '', email: '', phone: '', hearAbout: '', beerStyle: [],
-        quantity: '', targetAbv: '', flavours: [], occasion: '', eventDate: '', message: '',
+        quantity: '', flavours: [], occasion: '', eventDate: '', message: '',
       })
       setTimeout(() => setSubmitSuccess(false), 5000)
     } catch (error) {
@@ -116,15 +124,15 @@ export default function Contact() {
           </h1>
           <p className="text-lg leading-relaxed mt-9 max-w-[560px] text-ink opacity-80">
             Weddings, work parties, a very specific birthday, or a reason
-            you&apos;d rather not say. We brew custom 5-gallon batches with four
-            to six weeks of notice. Tell us what you want and we&apos;ll write
+            you&apos;d rather not say. We brew custom 5-gallon batches with two
+            weeks of notice. Tell us what you want and we&apos;ll write
             back within two days.
           </p>
           <div className="flex gap-8 mt-11 pt-7 border-t border-ink/20">
             {[
               { label: 'Minimum', value: '5 gallons' },
-              { label: 'Lead time', value: '4–6 weeks' },
-              { label: 'Starting at', value: 'CA $180' },
+              { label: 'Lead time', value: '2 weeks' },
+              { label: 'Starting at', value: 'CA $170' },
             ].map((item) => (
               <div key={item.label}>
                 <div className="font-mono text-[10px] tracking-[0.16em] uppercase opacity-55 mb-1.5">
@@ -172,8 +180,9 @@ export default function Contact() {
               <div className="bg-moss/10 border border-moss/30 text-moss px-6 py-4 mb-8">
                 <p className="font-semibold">Thank you for your request!</p>
                 <p className="text-sm mt-1 opacity-80">
-                  We&apos;ve received your custom brewing inquiry and will get back
-                  to you within 48 hours.
+                  We&apos;ve received your custom brewing inquiry and sent a
+                  confirmation to your email. We&apos;ll get back to you within
+                  48 hours.
                 </p>
               </div>
             )}
@@ -190,7 +199,7 @@ export default function Contact() {
               />
               <FormField
                 label="Phone" name="phone" optional="optional"
-                value={formData.phone} onChange={handleChange}
+                value={formData.phone} onChange={handleChange} error={errors.phone}
               />
               <FormField
                 label="How'd you hear about us?" name="hearAbout"
@@ -214,17 +223,31 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-8 mb-8">
-              <FormField
-                label="Quantity" required name="quantity"
-                value={formData.quantity} onChange={handleChange}
-                placeholder="e.g. 10 gallons (~85 bottles)" error={errors.quantity}
-              />
-              <FormField
-                label="Target ABV" name="targetAbv"
-                value={formData.targetAbv} onChange={handleChange}
-                placeholder="e.g. 5 — 6 %"
-              />
+            <div className="mb-8">
+              <FieldLabel label="Quantity" required error={errors.quantity} />
+              <div className="flex gap-4 mt-1">
+                {quantityOptions.map((opt) => (
+                  <label
+                    key={opt.value}
+                    className={`flex-1 flex items-center justify-between px-5 py-4 border-[1.5px] cursor-pointer transition-colors ${
+                      formData.quantity === opt.value
+                        ? 'border-ink bg-ink text-paper'
+                        : 'border-ink/25 bg-transparent text-ink hover:border-ink/50'
+                    }`}
+                  >
+                    <span className="font-sans text-base font-semibold">{opt.label}</span>
+                    <span className="font-mono text-sm opacity-80">{opt.price}</span>
+                    <input
+                      type="radio"
+                      name="quantity"
+                      value={opt.value}
+                      checked={formData.quantity === opt.value}
+                      onChange={handleChange}
+                      className="sr-only"
+                    />
+                  </label>
+                ))}
+              </div>
             </div>
             <div className="mb-12">
               <FieldLabel label="Flavour notes you'd like" />
@@ -250,9 +273,9 @@ export default function Contact() {
                 placeholder="e.g. Wedding reception"
               />
               <FormField
-                label="Event date" name="eventDate"
+                label="Event date" name="eventDate" type="date"
                 value={formData.eventDate} onChange={handleChange}
-                placeholder="e.g. June 21, 2026"
+                min={todayStr}
               />
             </div>
             <div className="mb-12">
@@ -337,11 +360,11 @@ function FieldLabel({ label, required, optional, error }: { label: string; requi
 }
 
 function FormField({
-  label, name, value, onChange, required, optional, placeholder, type = 'text', error,
+  label, name, value, onChange, required, optional, placeholder, type = 'text', error, min,
 }: {
   label: string; name: string; value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  required?: boolean; optional?: string; placeholder?: string; type?: string; error?: string
+  required?: boolean; optional?: string; placeholder?: string; type?: string; error?: string; min?: string
 }) {
   return (
     <div>
@@ -352,6 +375,7 @@ function FormField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        min={min}
         className={`w-full border-0 border-b-[1.5px] bg-transparent py-3 font-sans text-lg text-ink outline-none transition-colors ${
           error ? 'border-rust' : 'border-ink focus:border-ocean'
         }`}
