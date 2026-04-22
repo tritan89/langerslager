@@ -64,8 +64,8 @@ export function NavBar({
         <Link
           href="/contact"
           className={`font-sans font-semibold text-[13px] tracking-[0.02em] no-underline px-[18px] py-2.5 transition-colors ${onPaper
-              ? 'bg-ink text-paper hover:bg-ink2'
-              : 'bg-paper text-ink hover:bg-paper2'
+            ? 'bg-ink text-paper hover:bg-ink2'
+            : 'bg-paper text-ink hover:bg-paper2'
             }`}
         >
           Order a brew →
@@ -101,7 +101,7 @@ export function Footer() {
         {[
           {
             h: 'Visit',
-            l: ['123 Brew Lane', 'Craftsville, BC', 'Wed–Sat, noon–9pm', 'Sunday, 1–6pm'],
+            l: ['123 Brew Lane', 'Vancouver, BC', 'Wed–Sat, noon–9pm', 'Sunday, 1–6pm'],
           },
           {
             h: 'Browse',
@@ -150,7 +150,6 @@ export function Footer() {
 
       <div className="relative mt-16 pt-5 border-t border-paper/15 flex justify-between font-mono text-[11px] tracking-[0.12em] uppercase text-paper/55">
         <span>© 2026 Langer&apos;s Lager — Please drink responsibly</span>
-        <span>Crafted on stolen Coast Salish land · BC, Canada</span>
       </div>
     </footer>
   )

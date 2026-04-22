@@ -110,7 +110,7 @@ export default async function handler(
               If your event is coming up soon, we'll reach out right away to discuss timing.
             </p>
             <p style="color: #888; font-size: 13px; margin-top: 32px;">
-              Langer's Lager · 123 Brew Lane, Craftsville, BC
+              Langer's Lager · 123 Brew Lane, Vancouver, BC
             </p>
           </div>
         `,

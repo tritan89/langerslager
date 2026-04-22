@@ -30,7 +30,7 @@ export default function Home({ featuredBeers }: HomeProps) {
     <div className="min-h-screen bg-paper font-sans text-ink relative overflow-hidden">
       <Head>
         <title>Langer&apos;s Lager — Small batch, simply brewed</title>
-        <meta name="description" content="Brewing whatever inspires me from local berries to exiotic flavors." />
+        <meta name="description" content="Brewing whatever inspires me from local berries to exotic flavors." />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
@@ -55,7 +55,7 @@ export default function Home({ featuredBeers }: HomeProps) {
 
         {/* Hero content */}
         <div className="relative z-2 px-14 pt-[100px] pb-[120px] max-w-[1100px]">
-          <div className="eyebrow text-paper/75">Est. 2024 · Craftsville, BC</div>
+          <div className="eyebrow text-paper/75">Est. 2024 · Victoria, BC</div>
           <h1 className="font-sans text-[128px] font-bold leading-[0.92] tracking-[-0.035em] mt-6 text-paper">
             Small batch,<br />
             <span className="text-rust2 italic font-medium">simply</span> brewed.
@@ -248,7 +248,7 @@ export default function Home({ featuredBeers }: HomeProps) {
             <div className="relative">
               <div className="eyebrow text-paper/65 mb-5">Coordinates</div>
               <div className="font-sans text-[28px] font-semibold tracking-[-0.01em] leading-[1.25]">
-                123 Brew Lane<br />Craftsville, BC<br />V9A 7K2, Canada
+                123 Brew Lane<br />Vancouver, BC<br />V9A 7K2, Canada
               </div>
               <div className="mt-9 flex justify-between font-mono text-[11px] tracking-[0.12em] uppercase text-paper/60 pt-5 border-t border-paper/20">
                 <span>48°25′38″N</span>

@@ -229,11 +229,10 @@ export default function Contact() {
                 {quantityOptions.map((opt) => (
                   <label
                     key={opt.value}
-                    className={`flex-1 flex items-center justify-between px-5 py-4 border-[1.5px] cursor-pointer transition-colors ${
-                      formData.quantity === opt.value
+                    className={`flex-1 flex items-center justify-between px-5 py-4 border-[1.5px] cursor-pointer transition-colors ${formData.quantity === opt.value
                         ? 'border-ink bg-ink text-paper'
                         : 'border-ink/25 bg-transparent text-ink hover:border-ink/50'
-                    }`}
+                      }`}
                   >
                     <span className="font-sans text-base font-semibold">{opt.label}</span>
                     <span className="font-mono text-sm opacity-80">{opt.price}</span>
@@ -306,9 +305,8 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`bg-ink text-paper border-none px-7 py-4 font-sans text-sm font-semibold tracking-[0.01em] cursor-pointer hover:bg-ink2 transition-colors ${
-                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
-                  }`}
+                  className={`bg-ink text-paper border-none px-7 py-4 font-sans text-sm font-semibold tracking-[0.01em] cursor-pointer hover:bg-ink2 transition-colors ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                    }`}
                 >
                   {isSubmitting ? 'Sending...' : 'Send the request →'}
                 </button>
@@ -324,7 +322,7 @@ export default function Contact() {
           {[
             { h: 'Email', v: 'info@langerslager.com', s: 'Replies in 48h, usually less. Include a few dates if you can.' },
             { h: 'Call', v: '(250) 555 · 0147', s: 'Weekday afternoons are best. Leave a message — we check voicemail.' },
-            { h: 'Visit', v: '123 Brew Lane\nCraftsville, BC', s: 'Wed–Sun. Door around the side of the blue house with the tall hedge.' },
+            { h: 'Visit', v: '123 Brew Lane\nVancouver, BC', s: 'Wed–Sun. Door around the side of the blue house with the tall hedge.' },
           ].map((c, i) => (
             <div
               key={i}
@@ -376,9 +374,8 @@ function FormField({
         onChange={onChange}
         placeholder={placeholder}
         min={min}
-        className={`w-full border-0 border-b-[1.5px] bg-transparent py-3 font-sans text-lg text-ink outline-none transition-colors ${
-          error ? 'border-rust' : 'border-ink focus:border-ocean'
-        }`}
+        className={`w-full border-0 border-b-[1.5px] bg-transparent py-3 font-sans text-lg text-ink outline-none transition-colors ${error ? 'border-rust' : 'border-ink focus:border-ocean'
+          }`}
       />
     </div>
   )
@@ -389,11 +386,10 @@ function Chip({ label, on, onClick }: { label: string; on: boolean; onClick: () 
     <button
       type="button"
       onClick={onClick}
-      className={`font-sans text-sm font-medium px-4 py-2.5 border-[1.5px] cursor-pointer transition-colors ${
-        on
+      className={`font-sans text-sm font-medium px-4 py-2.5 border-[1.5px] cursor-pointer transition-colors ${on
           ? 'border-ink bg-ink text-paper'
           : 'border-ink/25 bg-transparent text-ink hover:border-ink/50'
-      }`}
+        }`}
     >
       {label}
     </button>

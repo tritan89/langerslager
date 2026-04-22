@@ -24,7 +24,7 @@ export default function TapRoomPage() {
     <div className="min-h-screen bg-paper font-sans text-ink relative overflow-hidden">
       <Head>
         <title>Tap Room — Langer&apos;s Lager</title>
-        <meta name="description" content="What's pouring, what's coming up. Visit the tap room at 123 Brew Lane, Craftsville." />
+        <meta name="description" content="What's pouring, what's coming up. Visit the tap room at 123 Brew Lane, Vancouver." />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
@@ -51,7 +51,7 @@ export default function TapRoomPage() {
           <div className="flex items-center gap-3.5">
             <div className="w-3.5 h-3.5 rounded-full bg-moss shadow-[0_0_0_5px_rgba(61,91,63,0.25)]" />
             <div className="text-2xl font-semibold tracking-[-0.01em]">
-              123 Brew Lane · Craftsville
+              123 Brew Lane · Vancouver
             </div>
           </div>
           <div className="h-px bg-ink opacity-20 my-5" />
@@ -146,11 +146,10 @@ export default function TapRoomPage() {
             {events.map((e, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-[100px_1fr_auto] gap-7 py-8 border-b border-paper/18 items-start ${
-                  i % 2 === 0
-                    ? 'pr-8 border-r border-r-paper/18'
-                    : 'pl-8'
-                }`}
+                className={`grid grid-cols-[100px_1fr_auto] gap-7 py-8 border-b border-paper/18 items-start ${i % 2 === 0
+                  ? 'pr-8 border-r border-r-paper/18'
+                  : 'pl-8'
+                  }`}
               >
                 <div className="text-center pt-1">
                   <div className="font-mono text-[11px] tracking-[0.18em] text-rust2 font-semibold">
