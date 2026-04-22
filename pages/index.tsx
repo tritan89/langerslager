@@ -61,7 +61,7 @@ export default function Home({ featuredBeers }: HomeProps) {
             <span className="text-rust2 italic font-medium">simply</span> brewed.
           </h1>
           <p className="font-sans text-[19px] leading-normal text-paper/80 max-w-[520px] mt-9 font-normal">
-            Brewing whatever inspires me from local berries to exiotic flavors.
+            Brewing whatever inspires me from local berries to exotic flavors.
           </p>
           <div className="flex gap-3.5 mt-11">
             <Link
