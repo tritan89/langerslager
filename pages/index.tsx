@@ -40,39 +40,39 @@ export default function Home({ featuredBeers }: HomeProps) {
       <div className="relative z-3 bg-ink text-paper">
         <NavBar active="Home" solid />
         {/* Ticker strip */}
-        <div className="flex gap-10 px-14 py-3.5 bg-kelp border-t border-b border-paper/12 font-mono text-[11px] tracking-[0.2em] uppercase text-paper">
-          <span>◆ Now pouring — Grapefruit Pale Ale</span>
-          <span>◆ Spring release drops April 27</span>
-          <span>◆ Tap room open Wed–Sat</span>
-          <span>◆ 48°25′N · 123°21′W</span>
+        <div className="flex gap-10 px-5 md:px-14 py-3.5 bg-kelp border-t border-b border-paper/12 font-mono text-[11px] tracking-[0.2em] uppercase text-paper overflow-x-auto">
+          <span className="whitespace-nowrap">◆ Now pouring — Grapefruit Pale Ale</span>
+          <span className="whitespace-nowrap">◆ Spring release drops April 27</span>
+          <span className="hidden sm:inline whitespace-nowrap">◆ Tap room open Wed–Sat</span>
+          <span className="hidden md:inline whitespace-nowrap">◆ 48°25′N · 123°21′W</span>
         </div>
       </div>
 
-      <section className="relative h-[860px] bg-ink text-paper overflow-hidden">
+      <section className="relative min-h-[480px] md:h-[860px] bg-ink text-paper overflow-hidden">
         <div className="absolute inset-0">
           <DuotonePhoto src="/images/brew_rig.jpg" alt="Brewing rig" tone="deep" overlayOpacity={0.6} />
         </div>
 
         {/* Hero content */}
-        <div className="relative z-2 px-14 pt-[100px] pb-[120px] max-w-[1100px]">
+        <div className="relative z-2 px-5 md:px-14 pt-12 md:pt-[100px] pb-16 md:pb-[120px] max-w-[1100px]">
           <div className="eyebrow text-paper/75">Est. 2024 · Victoria, BC</div>
-          <h1 className="font-sans text-[128px] font-bold leading-[0.92] tracking-[-0.035em] mt-6 text-paper">
+          <h1 className="font-sans text-[48px] md:text-[80px] lg:text-[128px] font-bold leading-[0.92] tracking-[-0.035em] mt-6 text-paper">
             Small batch,<br />
             <span className="text-rust2 italic font-medium">simply</span> brewed.
           </h1>
-          <p className="font-sans text-[19px] leading-normal text-paper/80 max-w-[520px] mt-9 font-normal">
+          <p className="font-sans text-[17px] md:text-[19px] leading-normal text-paper/80 max-w-[520px] mt-9 font-normal">
             Brewing whatever inspires me from local berries to exotic flavors.
           </p>
-          <div className="flex gap-3.5 mt-11">
+          <div className="flex flex-col sm:flex-row gap-3.5 mt-11">
             <Link
               href="/beers"
-              className="bg-paper text-ink px-7 py-4 text-sm font-semibold tracking-[0.01em] no-underline hover:bg-paper2 transition-colors"
+              className="bg-paper text-ink px-7 py-4 text-sm font-semibold tracking-[0.01em] no-underline hover:bg-paper2 transition-colors text-center"
             >
               See what&apos;s on tap →
             </Link>
             <Link
               href="/contact"
-              className="bg-transparent text-paper px-7 py-4 text-sm font-semibold tracking-[0.01em] no-underline border border-paper/35 hover:border-paper/60 transition-colors"
+              className="bg-transparent text-paper px-7 py-4 text-sm font-semibold tracking-[0.01em] no-underline border border-paper/35 hover:border-paper/60 transition-colors text-center"
             >
               Order a custom brew
             </Link>
@@ -80,38 +80,38 @@ export default function Home({ featuredBeers }: HomeProps) {
         </div>
 
         {/* Bottom metadata */}
-        <div className="absolute bottom-8 left-14 z-2 font-mono text-[10px] tracking-[0.18em] text-paper/55 uppercase">
+        <div className="absolute bottom-8 left-5 md:left-14 z-2 font-mono text-[10px] tracking-[0.18em] text-paper/55 uppercase hidden md:block">
           Vol. 03 / Spring 2026<br />Five gallons, brewed well
         </div>
-        <div className="absolute bottom-8 right-14 z-2 text-right font-mono text-[10px] tracking-[0.18em] text-paper/55">
+        <div className="absolute bottom-8 right-5 md:right-14 z-2 text-right font-mono text-[10px] tracking-[0.18em] text-paper/55 hidden md:block">
           N° 001 — Home<br />Scroll ↓
         </div>
       </section>
 
       {/* TAP LIST MINI */}
       {beers.length > 0 && (
-        <section className="relative z-2 bg-paper px-14 pt-[120px] pb-20">
-          <div className="flex justify-between items-end mb-14">
+        <section className="relative z-2 bg-paper px-5 md:px-14 pt-16 md:pt-[120px] pb-20">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-14 gap-6">
             <div>
               <div className="eyebrow mb-3.5">№ 02 — What&apos;s pouring</div>
-              <h2 className="text-[64px] font-bold m-0 tracking-[-0.025em] leading-none max-w-[780px]">
+              <h2 className="text-[36px] md:text-[64px] font-bold m-0 tracking-[-0.025em] leading-none max-w-[780px]">
                 {beers.length} in the fridge,<br />one in the{' '}
                 <span className="italic font-medium">fermentor</span>.
               </h2>
             </div>
             <Link
               href="/beers"
-              className="font-mono text-xs tracking-[0.15em] uppercase text-ink border-b border-ink pb-0.5 no-underline hover:opacity-70 transition-opacity"
+              className="font-mono text-xs tracking-[0.15em] uppercase text-ink border-b border-ink pb-0.5 no-underline hover:opacity-70 transition-opacity w-fit"
             >
               See the full menu →
             </Link>
           </div>
 
-          <div className={`grid grid-cols-${Math.min(beers.length, 3)} border-t-2 border-ink`}>
+          <div className="grid grid-cols-1 md:grid-cols-3 border-t-2 border-ink">
             {beers.map((b) => (
               <article
                 key={b.n}
-                className="px-8 pt-9 pb-10 border-r border-ink relative"
+                className="px-8 pt-9 pb-10 border-r border-b md:border-b-0 border-ink relative"
               >
                 <div className="flex justify-between items-start mb-5">
                   <div className="index-tag">№ {String(b.n).padStart(3, '0')}</div>
@@ -163,12 +163,12 @@ export default function Home({ featuredBeers }: HomeProps) {
       </section>
 
       {/* OUR STORY TEASER */}
-      <section className="relative z-2 bg-kelp text-paper px-14 py-[120px] overflow-hidden">
+      <section className="relative z-2 bg-kelp text-paper px-5 md:px-14 py-16 md:py-[120px] overflow-hidden">
         <div className="absolute inset-0 grain-overlay-heavy pointer-events-none" />
-        <div className="relative grid grid-cols-[1.1fr_1fr] gap-20 items-center">
+        <div className="relative grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-20 items-center">
           <div>
             <div className="eyebrow text-paper/65 mb-[18px]">№ 03 — Our story</div>
-            <h2 className="text-[68px] font-bold m-0 tracking-[-0.025em] leading-none">
+            <h2 className="text-[36px] md:text-[50px] lg:text-[68px] font-bold m-0 tracking-[-0.025em] leading-none">
               Started in an apartment.<br />
               <span className="italic font-medium text-rust2">Now</span> in the basement. <br />
               Soon in your fridge.
@@ -184,7 +184,7 @@ export default function Home({ featuredBeers }: HomeProps) {
             </Link>
 
             {/* Stats */}
-            <div className="mt-14 grid grid-cols-3 gap-8 border-t border-paper/20 pt-8">
+            <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 gap-8 border-t border-paper/20 pt-8">
               {[
                 { n: '12', l: 'Recipes\nin rotation' },
                 { n: '2024', l: 'First\nproper pour' },
@@ -202,7 +202,7 @@ export default function Home({ featuredBeers }: HomeProps) {
           </div>
 
           {/* Photo collage */}
-          <div className="relative h-[540px]">
+          <div className="relative h-[300px] md:h-[540px]">
             <div className="absolute top-0 right-0 w-3/4 h-[65%]">
               <DuotonePhoto src="/images/mash_king.jpg" alt="Mash tun" tone="moss" overlayOpacity={0.5} />
             </div>
@@ -214,11 +214,11 @@ export default function Home({ featuredBeers }: HomeProps) {
       </section>
 
       {/* VISIT */}
-      <section className="relative z-2 bg-paper px-14 py-[120px]">
-        <div className="grid grid-cols-2 gap-20">
+      <section className="relative z-2 bg-paper px-5 md:px-14 py-16 md:py-[120px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           <div>
             <div className="eyebrow mb-4">№ 04 — Come by</div>
-            <h2 className="text-[64px] font-bold m-0 tracking-[-0.025em] leading-none">
+            <h2 className="text-[36px] md:text-[64px] font-bold m-0 tracking-[-0.025em] leading-none">
               The tap room is<br />open{' '}
               <span className="italic font-medium text-moss">most nights</span>.
             </h2>
@@ -243,7 +243,7 @@ export default function Home({ featuredBeers }: HomeProps) {
           </div>
 
           {/* Coordinates card */}
-          <div className="relative bg-ink2 text-paper p-12 overflow-hidden">
+          <div className="relative bg-ink2 text-paper p-7 md:p-12 overflow-hidden">
             <div className="absolute inset-0 grain-overlay pointer-events-none" />
             <div className="relative">
               <div className="eyebrow text-paper/65 mb-5">Coordinates</div>

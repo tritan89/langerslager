@@ -32,9 +32,9 @@ export default function Recipes({ recipes }: RecipesProps) {
       </div>
 
       {/* Header */}
-      <section className="relative z-2 px-14 pt-[100px] pb-[60px]">
+      <section className="relative z-2 px-5 md:px-14 pt-12 md:pt-[100px] pb-[60px]">
         <div className="eyebrow mb-5">Recipes &amp; pairings</div>
-        <h1 className="text-[96px] font-bold m-0 tracking-[-0.035em] leading-[0.9] max-w-[900px]">
+        <h1 className="text-[48px] md:text-[72px] lg:text-[96px] font-bold m-0 tracking-[-0.035em] leading-[0.9] max-w-[900px]">
           Cook with<br />
           <span className="italic font-medium text-moss">our beer</span>.
         </h1>
@@ -45,13 +45,13 @@ export default function Recipes({ recipes }: RecipesProps) {
       </section>
 
       {/* Filter bar */}
-      <section className="relative z-2 px-14 pb-12">
-        <div className="flex gap-4 border-b-2 border-ink pb-4">
+      <section className="relative z-2 px-5 md:px-14 pb-12">
+        <div className="flex gap-4 border-b-2 border-ink pb-4 overflow-x-auto">
           {['All', 'Easy', 'Intermediate', 'Advanced'].map((d) => (
             <button
               key={d}
               onClick={() => setFilterDifficulty(d)}
-              className={`font-mono text-[11px] tracking-[0.14em] uppercase px-4 py-2 cursor-pointer transition-colors border-none ${
+              className={`font-mono text-[11px] tracking-[0.14em] uppercase px-4 py-2 cursor-pointer transition-colors border-none whitespace-nowrap ${
                 filterDifficulty === d
                   ? 'bg-ink text-paper font-bold'
                   : 'bg-transparent text-ink font-medium opacity-70 hover:opacity-100'
@@ -64,9 +64,9 @@ export default function Recipes({ recipes }: RecipesProps) {
       </section>
 
       {/* Recipe grid */}
-      <section className="relative z-2 px-14 pb-[100px]">
+      <section className="relative z-2 px-5 md:px-14 pb-[100px]">
         {filteredRecipes.length > 0 ? (
-          <div className="grid grid-cols-3 border-t border-l border-ink">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-ink">
             {filteredRecipes.map((recipe, i) => (
               <article
                 key={recipe.id}
@@ -119,14 +119,14 @@ export default function Recipes({ recipes }: RecipesProps) {
       {/* Recipe Modal */}
       {selectedRecipe && (
         <div
-          className="fixed inset-0 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-8 z-50"
+          className="fixed inset-0 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-8 z-50"
           onClick={() => setSelectedRecipe(null)}
         >
           <div
             className="bg-paper border-[1.5px] border-ink max-w-3xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-10">
+            <div className="p-6 md:p-10">
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <div className={`inline-block font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-[3px] border mb-3 ${
@@ -138,7 +138,7 @@ export default function Recipes({ recipes }: RecipesProps) {
                   }`}>
                     {selectedRecipe.difficulty}
                   </div>
-                  <h2 className="text-[36px] font-bold tracking-[-0.02em] leading-[1.1]">
+                  <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-0.02em] leading-[1.1]">
                     {selectedRecipe.title}
                   </h2>
                 </div>

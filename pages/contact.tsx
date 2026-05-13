@@ -115,10 +115,10 @@ export default function Contact() {
       </div>
 
       {/* Top header — split with photo */}
-      <section className="relative z-2 grid grid-cols-[1.2fr_1fr] min-h-[520px]">
-        <div className="px-14 pt-20 pb-[60px]">
+      <section className="relative z-2 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] min-h-[400px] lg:min-h-[520px]">
+        <div className="px-5 md:px-14 pt-12 md:pt-20 pb-[60px]">
           <div className="eyebrow mb-[18px]">№ 05 — Say hello</div>
-          <h1 className="text-[108px] font-bold m-0 tracking-[-0.035em] leading-[0.9]">
+          <h1 className="text-[48px] md:text-[72px] lg:text-[108px] font-bold m-0 tracking-[-0.035em] leading-[0.9]">
             Commission a<br />
             <span className="italic font-medium text-ocean">beer</span>.
           </h1>
@@ -128,7 +128,7 @@ export default function Contact() {
             weeks of notice. Tell us what you want and we&apos;ll write
             back within two days.
           </p>
-          <div className="flex gap-8 mt-11 pt-7 border-t border-ink/20">
+          <div className="flex flex-col sm:flex-row gap-8 mt-11 pt-7 border-t border-ink/20">
             {[
               { label: 'Minimum', value: '5 gallons' },
               { label: 'Lead time', value: '2 weeks' },
@@ -143,17 +143,19 @@ export default function Contact() {
             ))}
           </div>
         </div>
-        <DuotonePhoto
-          src="/images/bottle_tub.jpg"
-          alt="Bottles in ice"
-          tone="ocean"
-          overlayOpacity={0.55}
-        />
+        <div className="hidden lg:block">
+          <DuotonePhoto
+            src="/images/bottle_tub.jpg"
+            alt="Bottles in ice"
+            tone="ocean"
+            overlayOpacity={0.55}
+          />
+        </div>
       </section>
 
       {/* Form */}
-      <section className="relative z-2 px-14 py-[100px] bg-paper2">
-        <div className="grid grid-cols-[300px_1fr] gap-20">
+      <section className="relative z-2 px-5 md:px-14 py-16 md:py-[100px] bg-paper2">
+        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-10 lg:gap-20">
           <div>
             <div className="font-mono text-[10px] tracking-[0.18em] uppercase text-ink opacity-60 mb-3">
               Form 01 / of 01
@@ -174,7 +176,7 @@ export default function Contact() {
 
           <form
             onSubmit={handleSubmit}
-            className="bg-paper p-12 border-[1.5px] border-ink"
+            className="bg-paper p-6 md:p-12 border-[1.5px] border-ink"
           >
             {submitSuccess && (
               <div className="bg-moss/10 border border-moss/30 text-moss px-6 py-4 mb-8">
@@ -188,7 +190,7 @@ export default function Contact() {
             )}
 
             {/* Section 01 — About you */}
-            <div className="grid grid-cols-2 gap-8 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
               <FormField
                 label="Full name" required name="name"
                 value={formData.name} onChange={handleChange} error={errors.name}
@@ -265,7 +267,7 @@ export default function Contact() {
             <div className="h-px bg-ink opacity-20 mb-10" />
 
             {/* Section 03 — The occasion */}
-            <div className="grid grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
               <FormField
                 label="Occasion" name="occasion"
                 value={formData.occasion} onChange={handleChange}
@@ -291,7 +293,7 @@ export default function Contact() {
 
             <div className="h-px bg-ink opacity-20 mb-7" />
 
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div className="mono-label text-ink opacity-60">
                 Step 3 of 3 · We&apos;ll reply within 48h
               </div>
@@ -317,8 +319,8 @@ export default function Contact() {
       </section>
 
       {/* Contact info */}
-      <section className="relative z-2 px-14 py-[100px] bg-paper">
-        <div className="grid grid-cols-3 gap-8 border-t-2 border-ink">
+      <section className="relative z-2 px-5 md:px-14 py-16 md:py-[100px] bg-paper">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t-2 border-ink">
           {[
             { h: 'Email', v: 'info@langerslager.com', s: 'Replies in 48h, usually less. Include a few dates if you can.' },
             { h: 'Call', v: '(250) 555 · 0147', s: 'Weekday afternoons are best. Leave a message — we check voicemail.' },
@@ -326,7 +328,7 @@ export default function Contact() {
           ].map((c, i) => (
             <div
               key={i}
-              className={`pt-9 pb-9 ${i < 2 ? 'pr-8 border-r border-ink/15' : ''} ${i > 0 ? 'pl-8' : ''}`}
+              className={`pt-9 pb-9 ${i < 2 ? 'md:pr-8 md:border-r md:border-ink/15' : ''} ${i > 0 ? 'md:pl-8' : ''} ${i > 0 ? 'border-t md:border-t-0 border-ink/15' : ''}`}
             >
               <div className="eyebrow mb-3.5">{c.h}</div>
               <div className="text-[28px] font-bold tracking-[-0.015em] leading-[1.2] mb-3 whitespace-pre-line">

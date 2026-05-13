@@ -18,9 +18,9 @@ export default function StoryPage() {
       </div>
 
       {/* Big headline */}
-      <section className="relative z-2 px-14 pt-[100px] pb-[60px]">
+      <section className="relative z-2 px-5 md:px-14 pt-12 md:pt-[100px] pb-[60px]">
         <div className="eyebrow mb-5">№ 03 — Our story</div>
-        <h1 className="text-[156px] font-bold m-0 tracking-[-0.035em] leading-[0.88] max-w-[1200px]">
+        <h1 className="text-[48px] md:text-[96px] lg:text-[156px] font-bold m-0 tracking-[-0.035em] leading-[0.88] max-w-[1200px]">
           A very small<br />
           brewery on a<br />
           <span className="italic font-medium text-moss">rainy</span> coast.
@@ -28,14 +28,14 @@ export default function StoryPage() {
       </section>
 
       {/* Intro — two col */}
-      <section className="relative z-2 px-14 pt-10 pb-[100px] grid grid-cols-[1fr_1.2fr] gap-20 items-start">
+      <section className="relative z-2 px-5 md:px-14 pt-10 pb-16 md:pb-[100px] grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-20 items-start">
         <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink opacity-55 leading-relaxed">
           Founded 2024<br />
           Brewed in Vancouver, BC<br />
           Distributed by walking over
         </div>
         <div>
-          <p className="text-[22px] leading-relaxed m-0 tracking-[-0.005em]">
+          <p className="text-[19px] md:text-[22px] leading-relaxed m-0 tracking-[-0.005em]">
             Langer&apos;s Lager began with a pot, a burner, and a thirsty young man. Going from one to two vessel systems experimenting with teas, spices and whatever else I could could get my hands on a young brewer emerged.  Two years later,
             there&apos;s more beer being brewed, drunk and shared.
           </p>
@@ -46,7 +46,7 @@ export default function StoryPage() {
       </section>
 
       {/* Big photo band */}
-      <section className="relative z-2 h-[520px]">
+      <section className="relative z-2 h-[300px] md:h-[520px]">
         <DuotonePhoto
           src="/images/fermentor_wort.jpg"
           alt="Primary fermentor"
@@ -54,12 +54,12 @@ export default function StoryPage() {
           height="100%"
           overlayOpacity={0.4}
         >
-          <div className="absolute bottom-8 left-14 right-14 flex justify-between items-end text-paper">
+          <div className="absolute bottom-8 left-5 md:left-14 right-5 md:right-14 flex flex-col md:flex-row justify-between items-start md:items-end text-paper gap-2">
             <div className="font-mono text-[11px] tracking-[0.18em] uppercase">
               Fig. 01 — primary fermentor<br />
               <span className="opacity-70">Ambient 18°C · day six</span>
             </div>
-            <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-right">
+            <div className="font-mono text-[11px] tracking-[0.18em] uppercase md:text-right">
               Victoria, BC<br />
               <span className="opacity-70">48.426°N · 123.366°W</span>
             </div>
@@ -68,8 +68,8 @@ export default function StoryPage() {
       </section>
 
       {/* Timeline */}
-      <section className="relative z-2 px-14 py-[120px] bg-paper">
-        <div className="grid grid-cols-[340px_1fr] gap-20 items-start">
+      <section className="relative z-2 px-5 md:px-14 py-16 md:py-[120px] bg-paper">
+        <div className="grid grid-cols-1 md:grid-cols-[340px_1fr] gap-10 md:gap-20 items-start">
           <div>
             <div className="eyebrow mb-[18px]">How we got here</div>
             <h2 className="text-[56px] font-bold m-0 tracking-[-0.025em] leading-none">
@@ -85,13 +85,13 @@ export default function StoryPage() {
             ].map(([y, t, d], i) => (
               <div
                 key={i}
-                className="grid grid-cols-[140px_1fr] gap-10 py-8 border-b border-ink/15"
+                className="grid grid-cols-[80px_1fr] md:grid-cols-[140px_1fr] gap-5 md:gap-10 py-8 border-b border-ink/15"
               >
                 <div className="font-mono text-xl font-semibold text-ocean tracking-[-0.01em]">
                   {y}
                 </div>
                 <div>
-                  <h3 className="text-[26px] font-bold mb-2.5 tracking-[-0.015em]">
+                  <h3 className="text-[22px] md:text-[26px] font-bold mb-2.5 tracking-[-0.015em]">
                     {t}
                   </h3>
                   <p className="text-base leading-relaxed text-ink opacity-70 m-0 max-w-[640px]">
@@ -105,16 +105,16 @@ export default function StoryPage() {
       </section>
 
       {/* The process — 4-step */}
-      <section className="relative z-2 bg-kelp text-paper px-14 py-[120px] overflow-hidden">
+      <section className="relative z-2 bg-kelp text-paper px-5 md:px-14 py-16 md:py-[120px] overflow-hidden">
         <div className="absolute inset-0 grain-overlay-heavy pointer-events-none" />
         <div className="relative">
           <div className="eyebrow text-paper/60 mb-[18px]">The process</div>
-          <h2 className="text-[72px] font-bold m-0 tracking-[-0.025em] leading-none max-w-[900px]">
+          <h2 className="text-[40px] md:text-[56px] lg:text-[72px] font-bold m-0 tracking-[-0.025em] leading-none max-w-[900px]">
             Four weeks,<br />
             <span className="italic font-medium text-rust2">four steps</span>,
             one stove.
           </h2>
-          <div className="mt-[72px] grid grid-cols-4 gap-8">
+          <div className="mt-12 md:mt-[72px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               ['01', 'Mash', 'Grain, hot water, patience. We hit 67°C and hold for an hour. Sugars do their thing.'],
               ['02', 'Boil', 'Ninety minutes of vigorous argument between water and hops. The garage smells incredible.'],
@@ -138,13 +138,19 @@ export default function StoryPage() {
       </section>
 
       {/* Photo grid */}
-      <section className="relative z-2 bg-paper px-14 py-[100px]">
-        <div className="grid grid-cols-3 gap-4 h-[480px]">
-          <DuotonePhoto src="/images/shelves.jpg" alt="Bottle library" tone="moss" />
-          <DuotonePhoto src="/images/mash_king.jpg" alt="Mash tun" tone="ocean" />
-          <DuotonePhoto src="/images/co2_tank.jpg" alt="CO2 tank" tone="deep" />
+      <section className="relative z-2 bg-paper px-5 md:px-14 py-16 md:py-[100px]">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:h-[480px]">
+          <div className="h-[250px] sm:h-full">
+            <DuotonePhoto src="/images/shelves.jpg" alt="Bottle library" tone="moss" />
+          </div>
+          <div className="h-[250px] sm:h-full">
+            <DuotonePhoto src="/images/mash_king.jpg" alt="Mash tun" tone="ocean" />
+          </div>
+          <div className="h-[250px] sm:h-full">
+            <DuotonePhoto src="/images/co2_tank.jpg" alt="CO2 tank" tone="deep" />
+          </div>
         </div>
-        <div className="mt-4 grid grid-cols-3 gap-4 font-mono text-[11px] tracking-[0.14em] uppercase text-ink opacity-55">
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-[11px] tracking-[0.14em] uppercase text-ink opacity-55">
           <span>Fig. 02 — the bottle library</span>
           <span>Fig. 03 — mash · boil · hot liquor</span>
           <span>Fig. 04 — CO₂ on deposit</span>

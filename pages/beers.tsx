@@ -59,9 +59,9 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
       {/* Dark header */}
       <div className="bg-ink text-paper relative z-2">
         <NavBar active="Beers" />
-        <div className="px-14 pt-20 pb-[100px] relative">
+        <div className="px-5 md:px-14 pt-12 md:pt-20 pb-16 md:pb-[100px] relative">
           <div className="eyebrow text-paper/70 mb-5">№ 02 — The catalog</div>
-          <h1 className="text-[144px] font-bold m-0 tracking-[-0.035em] leading-[0.9] text-paper">
+          <h1 className="text-[56px] md:text-[96px] lg:text-[144px] font-bold m-0 tracking-[-0.035em] leading-[0.9] text-paper">
             The <span className="italic font-medium text-rust2">beers</span>.
           </h1>
           <p className="text-lg leading-normal text-paper/75 mt-7 max-w-[520px]">
@@ -71,9 +71,9 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
       </div>
 
       {/* Filter bar */}
-      <section className="relative z-2 bg-paper2 px-14 py-[22px] border-b border-ink">
-        <div className="flex justify-between items-center">
-          <div className="flex gap-6 font-mono text-[11px] tracking-[0.12em] uppercase text-ink">
+      <section className="relative z-2 bg-paper2 px-5 md:px-14 py-[22px] border-b border-ink">
+        <div className="flex flex-col md:flex-row md:justify-between gap-4 md:items-center">
+          <div className="flex flex-wrap gap-4 md:gap-6 font-mono text-[11px] tracking-[0.12em] uppercase text-ink">
             <span className="opacity-55">Filter:</span>
             {styles.map((s, i) => (
               <button
@@ -86,7 +86,7 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
               </button>
             ))}
           </div>
-          <div className="flex gap-6 font-mono text-[11px] tracking-[0.12em] uppercase text-ink">
+          <div className="flex flex-wrap gap-4 md:gap-6 font-mono text-[11px] tracking-[0.12em] uppercase text-ink">
             <span className="opacity-55">Season:</span>
             {seasons.map((s, i) => (
               <button
@@ -103,8 +103,8 @@ export default function BeersPage({ dbBeers }: BeersPageProps) {
       </section>
 
       {/* Catalog grid */}
-      <section className="relative z-2 p-14">
-        <div className="grid grid-cols-3 border-t border-l border-ink">
+      <section className="relative z-2 p-5 md:p-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-ink">
           {beers.map((b) => (
             <article
               key={b.n}

@@ -35,10 +35,10 @@ export default function TapRoomPage() {
       </div>
 
       {/* Header */}
-      <section className="relative z-2 px-14 pt-20 pb-[60px] grid grid-cols-[1.4fr_1fr] gap-20 items-end">
+      <section className="relative z-2 px-5 md:px-14 pt-12 md:pt-20 pb-[60px] grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-20 items-end">
         <div>
           <div className="eyebrow mb-[18px]">№ 04 — Tap room</div>
-          <h1 className="text-[128px] font-bold m-0 tracking-[-0.035em] leading-[0.9]">
+          <h1 className="text-[48px] md:text-[80px] lg:text-[128px] font-bold m-0 tracking-[-0.035em] leading-[0.9]">
             What&apos;s{' '}
             <span className="italic font-medium text-rust">pouring</span>,<br />
             what&apos;s coming up.
@@ -50,7 +50,7 @@ export default function TapRoomPage() {
           </div>
           <div className="flex items-center gap-3.5">
             <div className="w-3.5 h-3.5 rounded-full bg-moss shadow-[0_0_0_5px_rgba(61,91,63,0.25)]" />
-            <div className="text-2xl font-semibold tracking-[-0.01em]">
+            <div className="text-lg md:text-2xl font-semibold tracking-[-0.01em]">
               123 Brew Lane · Vancouver
             </div>
           </div>
@@ -65,55 +65,93 @@ export default function TapRoomPage() {
       </section>
 
       {/* Kegerator photos */}
-      <section className="relative z-2 px-14 pb-10 grid grid-cols-2 gap-4 h-[420px]">
-        <DuotonePhoto src="/images/kegerator.jpg" alt="House kegerator" tone="ocean" overlayOpacity={0.3}>
-          <div className="absolute bottom-5 left-5 font-mono text-[10px] tracking-[0.18em] uppercase text-paper">
-            Fig. 01 — house kegerator · single tap
-          </div>
-        </DuotonePhoto>
-        <DuotonePhoto src="/images/kegerator2.jpg" alt="Taproom cold side" tone="moss" overlayOpacity={0.3}>
-          <div className="absolute bottom-5 left-5 font-mono text-[10px] tracking-[0.18em] uppercase text-paper">
-            Fig. 02 — cold-side · the taproom
-          </div>
-        </DuotonePhoto>
+      <section className="relative z-2 px-5 md:px-14 pb-10 grid grid-cols-1 md:grid-cols-2 gap-4 h-auto md:h-[420px]">
+        <div className="h-[250px] md:h-full">
+          <DuotonePhoto src="/images/kegerator.jpg" alt="House kegerator" tone="ocean" overlayOpacity={0.3}>
+            <div className="absolute bottom-5 left-5 font-mono text-[10px] tracking-[0.18em] uppercase text-paper">
+              Fig. 01 — house kegerator · single tap
+            </div>
+          </DuotonePhoto>
+        </div>
+        <div className="h-[250px] md:h-full">
+          <DuotonePhoto src="/images/kegerator2.jpg" alt="Taproom cold side" tone="moss" overlayOpacity={0.3}>
+            <div className="absolute bottom-5 left-5 font-mono text-[10px] tracking-[0.18em] uppercase text-paper">
+              Fig. 02 — cold-side · the taproom
+            </div>
+          </DuotonePhoto>
+        </div>
       </section>
 
       {/* TAP LIST */}
-      <section className="relative z-2 px-14 pt-10 pb-[100px]">
-        <div className="grid grid-cols-[2fr_0.7fr_0.7fr_0.7fr_0.5fr] py-3.5 border-b-2 border-ink font-mono text-[11px] tracking-[0.14em] uppercase text-ink opacity-70">
-          <span>Beer</span>
-          <span>ABV · IBU</span>
-          <span>8 oz</span>
-          <span>16 oz</span>
-          <span>Pitcher</span>
-        </div>
-        {onTap.map((b) => (
-          <div
-            key={b.n}
-            className="grid grid-cols-[2fr_0.7fr_0.7fr_0.7fr_0.5fr] py-7 border-b border-ink/15 items-center"
-          >
-            <div className="flex gap-[22px] items-center">
-              <div className={`w-11 h-11 ${b.color} shrink-0 flex items-center justify-center font-mono text-[11px] text-paper tracking-[0.1em]`}>
-                {String(b.n).padStart(2, '0')}
-              </div>
-              <div>
-                <div className="text-[28px] font-bold tracking-[-0.02em] leading-[1.1]">
-                  {b.name}
-                </div>
-                <div className="mono-label text-ink opacity-60 mt-1.5">
-                  {b.style} · {b.note}
-                </div>
-              </div>
-            </div>
-            <div className="font-mono text-[15px]">
-              <span className="font-semibold">{b.abv}%</span>
-              <span className="opacity-50 ml-2">{b.ibu} IBU</span>
-            </div>
-            <div className="font-mono text-lg font-semibold">${b.oz8}</div>
-            <div className="font-mono text-lg font-semibold">${b.oz16}</div>
-            <div className="font-mono text-lg font-semibold">${b.pitcher}</div>
+      <section className="relative z-2 px-5 md:px-14 pt-10 pb-[100px]">
+        {/* Desktop table */}
+        <div className="hidden md:block">
+          <div className="grid grid-cols-[2fr_0.7fr_0.7fr_0.7fr_0.5fr] py-3.5 border-b-2 border-ink font-mono text-[11px] tracking-[0.14em] uppercase text-ink opacity-70">
+            <span>Beer</span>
+            <span>ABV · IBU</span>
+            <span>8 oz</span>
+            <span>16 oz</span>
+            <span>Pitcher</span>
           </div>
-        ))}
+          {onTap.map((b) => (
+            <div
+              key={b.n}
+              className="grid grid-cols-[2fr_0.7fr_0.7fr_0.7fr_0.5fr] py-7 border-b border-ink/15 items-center"
+            >
+              <div className="flex gap-[22px] items-center">
+                <div className={`w-11 h-11 ${b.color} shrink-0 flex items-center justify-center font-mono text-[11px] text-paper tracking-[0.1em]`}>
+                  {String(b.n).padStart(2, '0')}
+                </div>
+                <div>
+                  <div className="text-[28px] font-bold tracking-[-0.02em] leading-[1.1]">
+                    {b.name}
+                  </div>
+                  <div className="mono-label text-ink opacity-60 mt-1.5">
+                    {b.style} · {b.note}
+                  </div>
+                </div>
+              </div>
+              <div className="font-mono text-[15px]">
+                <span className="font-semibold">{b.abv}%</span>
+                <span className="opacity-50 ml-2">{b.ibu} IBU</span>
+              </div>
+              <div className="font-mono text-lg font-semibold">${b.oz8}</div>
+              <div className="font-mono text-lg font-semibold">${b.oz16}</div>
+              <div className="font-mono text-lg font-semibold">${b.pitcher}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile card layout */}
+        <div className="md:hidden border-t-2 border-ink">
+          {onTap.map((b) => (
+            <div key={b.n} className="py-6 border-b border-ink/15">
+              <div className="flex gap-3 items-center mb-3">
+                <div className={`w-9 h-9 ${b.color} shrink-0 flex items-center justify-center font-mono text-[10px] text-paper tracking-[0.1em]`}>
+                  {String(b.n).padStart(2, '0')}
+                </div>
+                <div>
+                  <div className="text-xl font-bold tracking-[-0.02em] leading-[1.1]">
+                    {b.name}
+                  </div>
+                  <div className="mono-label text-ink opacity-60 mt-0.5">
+                    {b.style}
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-4 font-mono text-sm mt-2">
+                <span className="font-semibold">{b.abv}%</span>
+                <span className="opacity-50">{b.ibu} IBU</span>
+              </div>
+              <div className="flex gap-6 mt-3 font-mono text-sm">
+                <span><span className="opacity-50">8oz</span> ${b.oz8}</span>
+                <span><span className="opacity-50">16oz</span> ${b.oz16}</span>
+                <span><span className="opacity-50">Pitcher</span> ${b.pitcher}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div className="mt-7 mono-label text-ink opacity-55">
           Flights — four 4oz pours for $12 · Growlers filled on request · Cash &
           cards both fine
@@ -121,13 +159,13 @@ export default function TapRoomPage() {
       </section>
 
       {/* EVENTS */}
-      <section className="relative z-2 bg-ink text-paper px-14 py-[120px] overflow-hidden">
+      <section className="relative z-2 bg-ink text-paper px-5 md:px-14 py-16 md:py-[120px] overflow-hidden">
         <div className="absolute inset-0 grain-overlay-heavy pointer-events-none" />
         <div className="relative">
-          <div className="flex justify-between items-end mb-16">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 md:mb-16 gap-6">
             <div>
               <div className="eyebrow text-paper/65 mb-[18px]">On the calendar</div>
-              <h2 className="text-[80px] font-bold m-0 tracking-[-0.03em] leading-[0.95] text-paper">
+              <h2 className="text-[40px] md:text-[60px] lg:text-[80px] font-bold m-0 tracking-[-0.03em] leading-[0.95] text-paper">
                 Come by,<br />
                 <span className="italic font-medium text-rust2">stay a while</span>.
               </h2>
@@ -142,20 +180,20 @@ export default function TapRoomPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 border-t border-paper/25">
+          <div className="grid grid-cols-1 md:grid-cols-2 border-t border-paper/25">
             {events.map((e, i) => (
               <div
                 key={i}
-                className={`grid grid-cols-[100px_1fr_auto] gap-7 py-8 border-b border-paper/18 items-start ${i % 2 === 0
-                  ? 'pr-8 border-r border-r-paper/18'
-                  : 'pl-8'
+                className={`grid grid-cols-[60px_1fr] md:grid-cols-[100px_1fr_auto] gap-4 md:gap-7 py-8 border-b border-paper/18 items-start ${i % 2 === 0
+                  ? 'md:pr-8 md:border-r md:border-r-paper/18'
+                  : 'md:pl-8'
                   }`}
               >
                 <div className="text-center pt-1">
                   <div className="font-mono text-[11px] tracking-[0.18em] text-rust2 font-semibold">
                     {e.d}
                   </div>
-                  <div className="text-[56px] font-bold tracking-[-0.03em] text-paper leading-[0.95] mt-1">
+                  <div className="text-[36px] md:text-[56px] font-bold tracking-[-0.03em] text-paper leading-[0.95] mt-1">
                     {e.day}
                   </div>
                   <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-paper/55 mt-1.5">
@@ -166,7 +204,7 @@ export default function TapRoomPage() {
                   <div className="inline-block font-mono text-[10px] tracking-[0.14em] uppercase px-2 py-[3px] border border-paper/40 text-paper/80 mb-3.5">
                     {e.tag}
                   </div>
-                  <h3 className="text-2xl font-bold mb-2.5 tracking-[-0.015em] text-paper leading-[1.2]">
+                  <h3 className="text-xl md:text-2xl font-bold mb-2.5 tracking-[-0.015em] text-paper leading-[1.2]">
                     {e.title}
                   </h3>
                   <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-rust2 mb-3">
@@ -175,8 +213,13 @@ export default function TapRoomPage() {
                   <p className="text-sm leading-relaxed text-paper/70 m-0 max-w-[440px]">
                     {e.desc}
                   </p>
+                  {/* RSVP link on mobile */}
+                  <div className="md:hidden mt-3 font-mono text-[11px] tracking-[0.14em] uppercase text-paper border-b border-paper/40 pb-0.5 cursor-pointer hover:border-paper transition-colors w-fit">
+                    RSVP →
+                  </div>
                 </div>
-                <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-paper border-b border-paper/40 pb-0.5 cursor-pointer hover:border-paper transition-colors">
+                {/* RSVP on desktop */}
+                <div className="hidden md:block font-mono text-[11px] tracking-[0.14em] uppercase text-paper border-b border-paper/40 pb-0.5 cursor-pointer hover:border-paper transition-colors">
                   RSVP →
                 </div>
               </div>
